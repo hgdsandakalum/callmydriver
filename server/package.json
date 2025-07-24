@@ -22,9 +22,10 @@
     "@types/express": "^5.0.3",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.1.0",
+    "concurrently": "^9.2.0",
+    "env-cmd": "^10.1.0",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "env-cmd": "^10.1.0"
+    "typescript": "^5.8.3"
   }
 }
