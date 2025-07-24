@@ -1,0 +1,30 @@
+{
+  "name": "callmydriver-server",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "dev": "env-cmd -f .env nodemon src/server.ts",
+    "start:dev": "env-cmd -f .env.development nodemon src/server.ts",
+    "build": "tsc",
+    "start:prod": "env-cmd -f .env.production node dist/server.js",
+    "lint": "eslint ./src --ext .ts",
+    "test": "env-cmd -f .env.test echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^4.21.2",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.1.0",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "env-cmd": "^10.1.0"
+  }
+}
