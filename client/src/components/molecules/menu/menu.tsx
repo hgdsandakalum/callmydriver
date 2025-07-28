@@ -1,6 +1,7 @@
 "use client";
 import React, { CSSProperties, useState } from "react";
 import AntMenu from "antd/es/menu";
+import ConfigProvider from "antd/es/config-provider";
 import type { MenuProps as AntMenuProps, SubMenuProps } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
@@ -9,6 +10,7 @@ type MenuItem = Required<AntMenuProps>["items"][number];
 export interface MenuProps {
   items: MenuItem[];
   defaultSelectedKeys?: string[];
+  selectedKeys?: string[];
   defaultOpenKeys?: string[];
   mode?: "vertical" | "horizontal" | "inline";
   width?: number | string;
@@ -94,22 +96,55 @@ export const Menu: React.FC<MenuProps> = ({
       }}
       className=""
     >
-      <AntMenu
-        mode={mode}
-        inlineCollapsed={collapsed}
-        items={items}
-        onOpenChange={onOpenChange}
-        expandIcon={(subMenuProps) => {
-          const isOpen = stateOpenKeys.includes(currentOpenKey ?? "");
-          return expandIcon
-            ? typeof expandIcon === "function"
-              ? expandIcon({ ...subMenuProps, isOpen })
-              : expandIcon
-            : expandIconDown({ ...subMenuProps, isOpen });
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "var(--color-primary)",
+            colorBgContainer: "var(--color-primary)",
+            colorText: "white",
+            colorBgTextHover: "rgba(255, 255, 255, 0.8)",
+            borderRadius: 0,
+          },
+          components: {
+            Menu: {
+              itemHeight: 64,
+              itemPaddingInline: 16,
+              itemMarginInline: 0,
+              itemSelectedBg: "transparent",
+              itemHoverBg: "rgba(255, 255, 255, 0.1)",
+              itemActiveBg: "transparent",
+              horizontalItemSelectedBg: "transparent",
+              horizontalItemSelectedColor: "white",
+              horizontalItemHoverBg: "rgba(255, 255, 255, 0.1)",
+              horizontalItemHoverColor: "white",
+              itemBorderRadius: 0,
+              itemSelectedColor: "white",
+              itemColor: "white",
+              itemHoverColor: "white",
+              activeBarBorderWidth: 0,
+              activeBarWidth: 0,
+              activeBarHeight: 0,
+            },
+          },
         }}
-        {...props}
-        className="custom_menu"
-      />
+      >
+        <AntMenu
+          mode={mode}
+          inlineCollapsed={collapsed}
+          items={items}
+          selectedKeys={props.selectedKeys}
+          onOpenChange={onOpenChange}
+          expandIcon={(subMenuProps) => {
+            const isOpen = stateOpenKeys.includes(currentOpenKey ?? "");
+            return expandIcon
+              ? typeof expandIcon === "function"
+                ? expandIcon({ ...subMenuProps, isOpen })
+                : expandIcon
+              : expandIconDown({ ...subMenuProps, isOpen });
+          }}
+          {...props}
+        />
+      </ConfigProvider>
     </div>
   );
 };
