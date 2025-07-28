@@ -11,6 +11,8 @@ export interface SwitchProps {
   loading?: boolean;
   className?: string;
   label?: React.ReactNode;
+  checkedChildren?: React.ReactNode;
+  unCheckedChildren?: React.ReactNode;
 }
 
 export const Switch: React.FC<SwitchProps> = ({
@@ -22,20 +24,22 @@ export const Switch: React.FC<SwitchProps> = ({
   loading = false,
   className = "",
   label,
+  checkedChildren,
+  unCheckedChildren,
 }) => {
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "var(--foreground)",
+          colorPrimary: "var(--primary)",
           borderRadius: 16,
         },
         components: {
           Switch: {
-            colorPrimary: "var(--color-blue-dark)",
-            colorPrimaryHover: "var(--color-blue-dark)",
-            handleSize: size === "small" ? 16 : 22,
-            trackHeight: size === "small" ? 20 : 28,
+            colorPrimary: "var(--primary-dark)",
+            colorPrimaryHover: "var(--primary-dark)",
+            handleSize: size === "small" ? 16 : 18,
+            trackHeight: size === "small" ? 20 : 22,
           },
         },
       }}
@@ -48,6 +52,8 @@ export const Switch: React.FC<SwitchProps> = ({
           disabled={disabled}
           size={size}
           loading={loading}
+          checkedChildren={checkedChildren}
+          unCheckedChildren={unCheckedChildren}
         />
         {label && <span>{label}</span>}
       </label>

@@ -1,6 +1,7 @@
 import React, { CSSProperties } from "react";
 import AntDrawer from "antd/es/drawer";
 import { Button } from "../button";
+import { ConfigProvider } from "antd";
 
 interface DrawerProps {
   open: boolean;
@@ -16,6 +17,7 @@ interface DrawerProps {
   size?: "default" | "large";
   children: React.ReactNode;
   className?: string;
+  rootClassName?: string;
   closeIcon?: boolean | React.ReactNode;
   extra?: React.ReactNode;
   mask?: boolean;
@@ -53,17 +55,27 @@ export const Drawer: React.FC<DrawerProps> = ({
   }
 
   return (
-    <AntDrawer
-      title={title}
-      onClose={onClose}
-      open={open}
-      loading={props.loading}
-      footer={footerComponent}
-      closeIcon={true}
-      getContainer={getContainer}
-      {...props}
+    <ConfigProvider
+      theme={{
+        components: {
+          Drawer: {
+            zIndexPopup: 49,
+          },
+        },
+      }}
     >
-      {props.children}
-    </AntDrawer>
+      <AntDrawer
+        title={title}
+        onClose={onClose}
+        open={open}
+        loading={props.loading}
+        footer={footerComponent}
+        closeIcon={true}
+        getContainer={getContainer}
+        {...props}
+      >
+        {props.children}
+      </AntDrawer>
+    </ConfigProvider>
   );
 };
