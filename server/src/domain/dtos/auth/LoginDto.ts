@@ -1,3 +1,4 @@
-export class LoginDto {
-  // TODO: Define login DTO
+export interface LoginDto {
+  email: string;
+  password: string;
 }
