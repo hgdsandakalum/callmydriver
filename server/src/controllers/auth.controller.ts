@@ -1,19 +1,18 @@
-import { Request, Response } from "express";
-import { AuthService } from "../services/authService";
+import { Request, Response, NextFunction } from "express";
+import { AuthService } from "../services/auth.service";
 import { LoginDto } from "../domain/dtos/auth/LoginDto";
-import { hashPassword } from "../utils/password";
-import { UserModel } from "../data/models/UserModel";
+import { RegisterDto } from "../domain/dtos/auth/RegisterDto";
+import { HttpError } from "../utils/httpError";
 
 const authService = new AuthService();
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (
+  req: Request<unknown, unknown, LoginDto>,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    const loginDto: LoginDto = {
-      email: req.body.email,
-      password: req.body.password,
-    };
-
-    const result = await authService.login(loginDto);
+    const result = await authService.login(req.body);
 
     res.status(200).json({
       success: true,
@@ -21,65 +20,27 @@ export const login = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Login failed";
-
-    res.status(401).json({
-      success: false,
-      message: errorMessage,
-    });
+    next(error);
   }
 };
 
-export const register = async (req: Request, res: Response) => {
+export const register = async (
+  req: Request<unknown, unknown, RegisterDto>,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    const { email, password, role, name } = req.body;
-
-    // Basic validation
-    if (!email || !password || !role || !name) {
-      return res
-        .status(400)
-        .json({ success: false, message: "All fields are required." });
-    }
-
-    // Check if user already exists
-    const existingUser = await UserModel.findOne({ email });
-    if (existingUser) {
-      return res
-        .status(409)
-        .json({ success: false, message: "User already exists." });
-    }
-
-    // Hash password
-    const hashedPassword = await hashPassword(password);
-
-    // Create user
-    const user = new UserModel({
-      email,
-      password: hashedPassword,
-      role,
-      name,
-    });
-
-    await user.save();
-
+    const user = await authService.register(req.body);
     res.status(201).json({
       success: true,
       message: "User registered successfully.",
-      user: {
-        id: user._id,
-        email: user.email,
-        role: user.role,
-        name: user.name,
-      },
+      user,
     });
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Registration failed.";
-    res.status(500).json({
-      success: false,
-      message: "Registration failed.",
-      error: errorMessage,
-    });
+    next(
+      error instanceof HttpError
+        ? error
+        : new HttpError(500, "Registration failed.")
+    );
   }
 };

@@ -1,13 +1,15 @@
 import mongoose from "mongoose";
-import { DATABASE_URL } from "../config/database";
+import { config } from "../config/env";
 
 export async function connectDatabase(): Promise<void> {
   try {
-    if (!DATABASE_URL) {
-      throw new Error("DATABASE_URL is not defined in environment variables");
+    if (!config.database.url) {
+      throw new Error(
+        "DATABASE_URL is missing. Set it in your environment variables."
+      );
     }
 
-    await mongoose.connect(DATABASE_URL);
+    await mongoose.connect(config.database.url);
     console.log("Connected to MongoDB successfully");
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);

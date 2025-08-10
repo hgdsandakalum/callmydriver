@@ -7,6 +7,7 @@
     "dev": "env-cmd -f .env nodemon src/server.ts",
     "start:dev": "env-cmd -f .env.development nodemon src/server.ts",
     "build": "tsc",
+    "prestart:prod": "npm run build",
     "start:prod": "env-cmd -f .env.production node dist/server.js",
     "lint": "eslint ./src --ext .ts",
     "test": "env-cmd -f .env.test echo \"No tests yet\" && exit 0"
@@ -16,10 +17,13 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.18.0",
     "mongoose": "^8.0.3",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

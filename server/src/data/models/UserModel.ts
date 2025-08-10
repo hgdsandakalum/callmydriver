@@ -36,6 +36,26 @@ const userSchema = new Schema<IUserDocument>(
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform: (_doc, ret: any) => {
+        ret.id = ret._id?.toString();
+        delete (ret as any)._id;
+        delete (ret as any).password;
+        return ret;
+      },
+    },
+    toObject: {
+      virtuals: true,
+      versionKey: false,
+      transform: (_doc, ret: any) => {
+        ret.id = ret._id?.toString();
+        delete (ret as any)._id;
+        delete (ret as any).password;
+        return ret;
+      },
+    },
   }
 );
 

@@ -1,4 +1,5 @@
 import jwt, { SignOptions } from "jsonwebtoken";
+import { config } from "../config/env";
 
 interface TokenPayload {
   id: string;
@@ -7,19 +8,20 @@ interface TokenPayload {
 }
 
 export function generateJWT(payload: TokenPayload): string {
-  const secret: string = process.env.JWT_SECRET || "your-secret-key";
-  const expiresIn = (process.env.JWT_EXPIRES_IN || "24h") as SignOptions["expiresIn"];
-
+  const secret = config.jwt.secret;
+  if (!secret && config.env.isProduction) {
+    throw new Error("JWT_SECRET must be set in production");
+  }
+  const expiresIn = config.jwt.expiresIn as SignOptions["expiresIn"];
   const options: SignOptions = { expiresIn };
-  return jwt.sign(payload, secret, options);
+  return jwt.sign(payload, secret || "dev-insecure-secret", options);
 }
 
 export function verifyJWT(token: string): TokenPayload {
-  const secret = process.env.JWT_SECRET || "your-secret-key";
-
+  const secret = config.jwt.secret;
   try {
-    return jwt.verify(token, secret) as TokenPayload;
-  } catch (error) {
+    return jwt.verify(token, secret || "dev-insecure-secret") as TokenPayload;
+  } catch {
     throw new Error("Invalid token");
   }
 }

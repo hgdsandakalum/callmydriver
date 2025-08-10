@@ -1,8 +1,6 @@
 import { IUserRepository } from "../../domain/auth/repositories/IUserRepository";
 import { User } from "../../domain/models/User";
 import { UserModel } from "../models/UserModel";
-import { comparePassword } from "../../utils/password";
-import { generateJWT } from "../../utils/jwt";
 
 export class UserRepositoryMongo implements IUserRepository {
   async findByEmail(email: string): Promise<User | null> {
@@ -14,16 +12,14 @@ export class UserRepositoryMongo implements IUserRepository {
     }
   }
 
-  async verifyPassword(password: string, hash: string): Promise<boolean> {
-    return comparePassword(password, hash);
-  }
-
-  async generateToken(user: User): Promise<string> {
-    return generateJWT({
-      id: user.id,
-      email: user.email,
-      role: user.role,
-    });
+  async create(user: {
+    email: string;
+    password: string;
+    role: "Driver" | "Customer";
+    name: string;
+  }): Promise<User> {
+    const doc = await UserModel.create(this.fromDomain(user));
+    return this.mapToDomain(doc);
   }
 
   private mapToDomain(userDoc: any): User {
@@ -35,6 +31,20 @@ export class UserRepositoryMongo implements IUserRepository {
       name: userDoc.name,
       createdAt: userDoc.createdAt,
       updatedAt: userDoc.updatedAt,
+    };
+  }
+
+  private fromDomain(user: {
+    email: string;
+    password: string;
+    role: "Driver" | "Customer";
+    name: string;
+  }) {
+    return {
+      email: user.email,
+      password: user.password,
+      role: user.role,
+      name: user.name,
     };
   }
 }
