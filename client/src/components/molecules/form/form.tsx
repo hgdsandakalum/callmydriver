@@ -12,7 +12,7 @@ type FormSize = "small" | "middle" | "large";
 
 interface FormProps {
   disabled?: boolean;
-  initialValues?: Record<string, any>;
+  initialValues?: Record<string, unknown>;
   labelWrap?: boolean;
   labelCol?: { span?: number; offset?: number; flex?: string | number };
   wrapperCol?: { span?: number; offset?: number; flex?: string | number };
@@ -23,18 +23,18 @@ interface FormProps {
   scrollToFirstError?: boolean;
   size?: FormSize;
   variant?: FormVariant;
-  onFieldsChange?: (changedFields: any[], allFields: any[]) => void;
-  onFinish?: (values: any) => void;
-  onFinishFailed?: (errorInfo: any) => void;
-  onValuesChange?: (changedValues?: any, allValues?: any) => void;
+  onFieldsChange?: (changedFields: unknown[], allFields: unknown[]) => void;
+  onFinish?: (values: unknown) => void;
+  onFinishFailed?: (errorInfo: unknown) => void;
+  onValuesChange?: (changedValues?: unknown, allValues?: unknown) => void;
   clearOnDestroy?: boolean;
-  validateMessages?: any;
+  validateMessages?: Record<string, unknown>;
   form?: FormInstance;
   children: React.ReactNode;
   requiredMark?: boolean;
   validateTrigger?: string | string[];
   className?: string;
-  onKeyPress?: (e?: any) => void;
+  onKeyPress?: (e?: React.KeyboardEvent) => void;
   showSuccessMessage?: boolean;
   successMessage?: string;
   showErrorMessage?: boolean;
@@ -60,7 +60,7 @@ export const Form: React.FC<FormProps> = ({
     }
   }, [props.initialValues, myform]);
 
-  const handleFinish = async (values: any) => {
+  const handleFinish = async (values: unknown) => {
     try {
       await props.onFinish?.(values);
       if (showSuccessMessage) {
@@ -74,7 +74,7 @@ export const Form: React.FC<FormProps> = ({
     }
   };
 
-  const handleFinishFailed = (errorInfo: any) => {
+  const handleFinishFailed = (errorInfo: unknown) => {
     props.onFinishFailed?.(errorInfo);
     if (showErrorMessage) {
       message.error("入力内容を確認してください");

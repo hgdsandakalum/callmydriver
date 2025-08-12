@@ -17,7 +17,7 @@ export default function Testimonials() {
       role: "Marketing Manager",
     },
     {
-      text: "I use SafeRide regularly when I'm too tired to drive after long work days. The drivers are always courteous and the service is reliable.",
+      text: "I use SafeRide regularly when I&apos;m too tired to drive after long work days. The drivers are always courteous and the service is reliable.",
       name: "Michael Chen",
       role: "Software Engineer",
     },
@@ -84,7 +84,7 @@ export default function Testimonials() {
             What Our Customers Say
           </h2>
           <p className="text-xl color-blue-gray">
-            Don't just take our word for it
+            Don&apos;t just take our word for it
           </p>
         </div>
 

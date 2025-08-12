@@ -6,7 +6,7 @@ import { DisplayValueType } from "rc-select/lib/interface";
 
 interface SelectOption {
   label: string;
-  value: any;
+  value: string | number | boolean | null;
   disabled?: boolean;
 }
 
@@ -27,10 +27,9 @@ interface SelectProps {
   mode?: "multiple" | "tags";
   notFoundContent?: React.ReactNode;
   open?: boolean;
-  optionRender?: (option: any) => React.ReactNode;
-  dropdownRender?: (
-    menu: React.ReactElement<any, string | React.JSXElementConstructor<any>>
-  ) => React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+  // Matches AntD's optionRender signature
+  optionRender?: (oriOption: any, info: { index: number }) => React.ReactNode;
+  dropdownRender?: (menu: React.ReactElement) => React.ReactElement;
   options: SelectOption[];
   placeholder?: string;
   placement?: "topLeft" | "bottomLeft" | "topRight" | "bottomRight";
@@ -49,7 +48,7 @@ interface SelectProps {
       | number[]
       | undefined
       | (string | number)[],
-    option?: any
+    option?: SelectOption | SelectOption[]
   ) => void;
   onClear?: () => void;
   onDeselect?: (value: string | number) => void;
@@ -57,8 +56,13 @@ interface SelectProps {
   onSelect?: (value: string | number) => void;
   suffixIcon?: React.ReactNode;
   rounded?: boolean;
-  onDropdownVisibleChange?: any;
-  tagRender?: (props: any) => React.ReactElement;
+  onDropdownVisibleChange?: (open: boolean) => void;
+  tagRender?: (props: {
+    label: React.ReactNode;
+    value: string | number;
+    closable?: boolean;
+    onClose: () => void;
+  }) => React.ReactElement;
   maxTagPlaceholder?:
     | React.ReactNode
     | ((omittedValues: DisplayValueType[]) => React.ReactNode);
@@ -78,10 +82,10 @@ export const Select: React.FC<SelectProps> = ({
   onSearch,
   ...props
 }) => {
-  const filterOption = (
-    input: string,
-    option?: { label: string; value: string }
-  ) => (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
+  const filterOption = (input: string, option?: SelectOption) =>
+    String(option?.label ?? "")
+      .toLowerCase()
+      .includes(input.toLowerCase());
 
   const [searchValue, setSearchValue] = useState<string>("");
   const [composing, setComposing] = useState<boolean>(false);
@@ -141,7 +145,16 @@ export const Select: React.FC<SelectProps> = ({
     }
   };
 
-  const handleChange = (value: any, option: any) => {
+  const handleChange = (
+    value:
+      | string
+      | string[]
+      | number
+      | number[]
+      | undefined
+      | (string | number)[],
+    option?: SelectOption | SelectOption[]
+  ) => {
     if (!composing) {
       if (onChange) {
         onChange(value, option);

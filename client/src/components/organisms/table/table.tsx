@@ -31,8 +31,8 @@ type Prop<T extends object> = {
     y?: number | string;
   };
   nullText?: string;
-  onRow?: any;
-  onChange?: (pagination: any, filters: any, sorter: any) => void;
+  onRow?: TableProps<T>["onRow"];
+  onChange?: TableProps<T>["onChange"];
   emptyText?: string;
   highlightLastRow?: boolean;
   rowSelection?: TableRowSelection;
@@ -62,7 +62,7 @@ export const Table = <T extends object>(props: Prop<T>) => {
     if (!col.render) {
       return {
         ...baseColumn,
-        render: (text: any) =>
+        render: (text: unknown) =>
           text === null || text === undefined || text === "" ? (
             <span className="text-gray-400">{nullText}</span>
           ) : (
