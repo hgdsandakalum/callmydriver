@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 export const FormSkeleton = () => {
   return (
     <div className="fixed inset-0 flex bg-gray-50 z-[9999]">
       {/* Sidebar Skeleton - Fixed height */}
-      <div className="w-64 min-h-screen bg-white border-r border-gray-200 p-4 overflow-y-auto">
+      <div className="w-64  bg-white border-r border-gray-200 p-4 overflow-y-auto">
         {/* User Profile Skeleton */}
         <div className="flex items-center space-x-2 mb-8">
           <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>
@@ -29,7 +29,7 @@ export const FormSkeleton = () => {
       </div>
 
       {/* Main Content Skeleton - Fixed height with scroll */}
-      <div className="flex-1 min-h-screen overflow-y-auto">
+      <div className="flex-1  overflow-y-auto">
         <div className="p-8">
           <div className=" mx-auto">
             {/* Header Skeleton */}

@@ -8,7 +8,9 @@ export type ButtonVariant =
   | "primary"
   | "secondary"
   | "secondaryAccent"
-  | "danger";
+  | "white"
+  | "danger"
+  | "custom";
 export type ButtonSize = "small" | "middle" | "large";
 export type ButtonShape = "default" | "circle" | "round";
 
@@ -71,33 +73,103 @@ const getButtonClasses = (
   }
 
   const variantClasses: Record<ButtonVariant, string> = {
-    primary: `!bg-foreground !text-background hover:!opacity-90 ${
+    primary: `!bg-primary !text-white hover:!opacity-90 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
-    secondary: `!bg-base-10 !text-foreground hover:!opacity-70 ${
+    secondary: `!bg-secondary !text-white hover:!opacity-70 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
-    secondaryAccent: `!bg-background !text-foreground hover:!opacity-70${
+    secondaryAccent: `!bg-white !text-secondary hover:!opacity-70 ${
+      customHeight ? "" : heightClasses[size]
+    } ${fontSize}`,
+    white: `!bg-white !text-primary-dark hover:!bg-primary-dark hover:!text-white ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
     danger: `!bg-red-700 !text-white hover:!bg-red-600 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
+    custom: `${customHeight ? "" : heightClasses[size]} ${fontSize}`,
   };
 
   const typeClasses: Record<ButtonType, string> = {
     block: variantClasses[variant],
-    dashed: `theme-border--${variant} theme-border-hover--${variant} theme-text--${variant} theme-text-hover--${variant} ${
-      customHeight ? "" : heightClasses[size]
+    dashed: `!border-2 !border-dashed ${
+      variant === "primary"
+        ? "!border-primary !text-primary hover:!border-primary hover:!text-primary"
+        : variant === "secondary"
+        ? "!border-secondary !text-secondary hover:!border-secondary hover:!text-secondary"
+        : variant === "white"
+        ? "!border-white !text-white hover:!border-white hover:!text-white"
+        : variant === "custom"
+        ? ""
+        : "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
+    } ${customHeight ? "" : heightClasses[size]} ${fontSize}`,
+    outlined: `!border-2 ${
+      variant === "primary"
+        ? "!border-primary !text-primary hover:!border-primary hover:!text-primary"
+        : variant === "secondary"
+        ? "!border-secondary !text-secondary hover:!border-secondary hover:!text-secondary"
+        : variant === "white"
+        ? "!border-white !text-white hover:!border-white hover:!text-white"
+        : variant === "custom"
+        ? ""
+        : "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
+    } ${customHeight ? "" : heightClasses[size]} ${fontSize}`,
+    link: `${
+      variant === "custom"
+        ? ""
+        : `!text-${
+            variant === "primary"
+              ? "primary"
+              : variant === "secondary"
+              ? "secondary"
+              : variant === "white"
+              ? "white"
+              : "foreground"
+          } hover:!text-${
+            variant === "primary"
+              ? "primary"
+              : variant === "secondary"
+              ? "secondary"
+              : variant === "white"
+              ? "white"
+              : "foreground"
+          }`
     } ${fontSize}`,
-    outlined: `theme-border--${variant} theme-border-hover--${variant} theme-text--${variant} theme-text-hover--${variant} ${
-      customHeight ? "" : heightClasses[size]
+    text: `${
+      variant === "custom"
+        ? ""
+        : `!text-${
+            variant === "primary"
+              ? "primary"
+              : variant === "secondary"
+              ? "secondary"
+              : variant === "white"
+              ? "white"
+              : "foreground"
+          } hover:!text-${
+            variant === "primary"
+              ? "primary"
+              : variant === "secondary"
+              ? "secondary"
+              : variant === "white"
+              ? "white"
+              : "foreground"
+          } hover:!bg-${
+            variant === "primary"
+              ? "primary"
+              : variant === "secondary"
+              ? "secondary"
+              : variant === "white"
+              ? "white"
+              : "foreground"
+          } hover:!bg-opacity-10`
     } ${fontSize}`,
-    link: `theme-text--${variant} theme-text-hover--${variant} ${fontSize}`,
-    text: `theme-text--${variant} theme-text-hover--${variant} hover:!bg-transparent ${fontSize}`,
   };
 
-  return `${typeClasses[type]} ${paddingClasses[size]}`;
+  return `${typeClasses[type]} ${
+    variant === "custom" ? "" : paddingClasses[size]
+  }`;
 };
 
 export const Button = React.memo(
@@ -115,7 +187,7 @@ export const Button = React.memo(
       () =>
         classNames(
           getButtonClasses(type, variant, size, disabled, props.customHeight),
-          "!font-sans relative",
+          "!font-sans relative transition-all duration-300",
           customClass,
           props.className
         ),
@@ -140,10 +212,6 @@ export const Button = React.memo(
         },
         components: {
           Button: {
-            contentFontSize: 14,
-            contentFontSizeLG: 15,
-            fontWeight: 700,
-            contentFontSizeSM: 13,
             primaryShadow: "none",
             paddingInline: 8,
             paddingBlockSM: 10,

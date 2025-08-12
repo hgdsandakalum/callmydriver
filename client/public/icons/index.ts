@@ -1,0 +1,66 @@
+import {
+  PiSteeringWheelFill,
+  PiEnvelopeFill,
+  PiCalendarFill,
+} from "react-icons/pi";
+import {
+  IoShieldOutline,
+  IoMailOutline,
+  IoMoonOutline,
+  IoSunnyOutline,
+  IoSettingsOutline,
+  IoHelpCircleOutline,
+  IoLogOutOutline,
+} from "react-icons/io5";
+import {
+  FiClock,
+  FiPhone,
+  FiCheckCircle,
+  FiMapPin,
+  FiUsers,
+  FiAward,
+  FiMenu,
+  FiZap,
+  FiBell,
+  FiChevronUp,
+} from "react-icons/fi";
+import { FaRegStar, FaArrowRight } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
+import {
+  HiOutlineUser,
+  HiUser,
+  HiOutlineCog,
+  HiOutlineBell,
+  HiOutlineHeart,
+  HiOutlineLocationMarker,
+} from "react-icons/hi";
+
+export const SteeringWheel = PiSteeringWheelFill;
+export const Users = FiUsers;
+export const MapPin = FiMapPin;
+export const Phone = FiPhone;
+export const Envelope = PiEnvelopeFill;
+export const Calendar = PiCalendarFill;
+export const Clock = FiClock;
+export const Shield = IoShieldOutline;
+export const Star = FaRegStar;
+export const CheckCircle = FiCheckCircle;
+export const Award = FiAward;
+export const ArrowRight = FaArrowRight;
+export const Menu = FiMenu;
+export const X = RxCross2;
+export const Zap = FiZap;
+export const Mail = IoMailOutline;
+export const UserOutline = HiOutlineUser;
+export const User = HiUser;
+export const Cog = HiOutlineCog;
+export const Bell = HiOutlineBell;
+export const Heart = HiOutlineHeart;
+export const LocationMarker = HiOutlineLocationMarker;
+export const Moon = IoMoonOutline;
+export const Sun = IoSunnyOutline;
+export const SettingsOutline = IoSettingsOutline;
+export const HelpOutline = IoHelpCircleOutline;
+export const LogoutOutline = IoLogOutOutline;
+export const BellOutline = FiBell;
+export const ChevronUp = FiChevronUp;
