@@ -50,15 +50,15 @@ export const USER_MENU_ITEMS = [
 
 export const THEME_CONFIG = {
   token: {
-    colorPrimary: "var(--color-primary)",
-    colorBgContainer: "var(--color-primary)",
-    colorText: "white",
-    colorBgTextHover: "rgba(255, 255, 255, 0.8)",
-    borderRadius: 0,
+    // colorPrimary: "var(--color-primary)",
+    // colorBgContainer: "var(--color-primary)",
+    // colorText: "white",
+    // colorBgTextHover: "rgba(255, 255, 255, 0.8)",
+    // borderRadius: 0,
   },
   components: {
     Layout: {
-      headerBg: "var(--color-primary)",
+      // headerBg: "var(--color-primary)",
       headerHeight: NAVIGATION_CONSTANTS.HEADER.HEIGHT,
       headerPadding: NAVIGATION_CONSTANTS.HEADER.PADDING,
     },

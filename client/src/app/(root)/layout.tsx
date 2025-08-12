@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       <Navigation />
       <main>{children}</main>
       <ScrollToTop />

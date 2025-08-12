@@ -35,6 +35,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Scroll Snapping Styles */
+.scroll-container {
+  /* height: 100vh;
+  overflow-y: scroll; */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.scroll-container > * {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 /* Color utility classes */
 .color-primary { color: var(--primary); }
 .bg-primary { background-color: var(--primary); }

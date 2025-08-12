@@ -16,6 +16,7 @@ interface NavigationActionsProps {
   onLoginClick: () => void;
   onLogoutClick: () => void;
   onNeedDriverClick: () => void;
+  onNeedDriverButtonVisible: boolean;
 }
 
 export const NavigationActions: React.FC<NavigationActionsProps> = ({
@@ -25,6 +26,7 @@ export const NavigationActions: React.FC<NavigationActionsProps> = ({
   isUserLoggedIn,
   isMobile,
   isDarkMode,
+  onNeedDriverButtonVisible,
   onThemeToggle,
   onNotificationClick,
   onLoginClick,
@@ -61,15 +63,17 @@ export const NavigationActions: React.FC<NavigationActionsProps> = ({
           onLogoutClick={onLogoutClick}
         />
       )}
-
       {/* Need a Driver Button */}
-      <Button
-        variant="white"
-        label="Need a Driver?"
-        icon={<SteeringWheel className="text-lg" />}
-        onClick={onNeedDriverClick}
-        className="!font-semibold"
-      />
+      {onNeedDriverButtonVisible && (
+        <Button
+          variant="white"
+          shape="round"
+          label="Need a Driver?"
+          icon={<SteeringWheel className="text-lg" />}
+          onClick={onNeedDriverClick}
+          className="!font-semibold"
+        />
+      )}
     </div>
   );
 };

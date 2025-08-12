@@ -13,6 +13,8 @@ export const useNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuItems, setMenuItems] = useState<MenuItem[]>(BASE_MENU_ITEMS);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isOnNeedDriverButtonVisible, setIsOnNeedDriverButtonVisible] =
+    useState(false);
 
   // Update menu items based on mobile state
   useEffect(() => {
@@ -44,6 +46,17 @@ export const useNavigation = () => {
     const removeScrollListener = createScrollListener(setScrollY);
     return removeScrollListener;
   }, []);
+
+  // Compute visibility of "Need a Driver" button
+  useEffect(() => {
+    if (isMobile) {
+      setIsOnNeedDriverButtonVisible(true);
+    } else {
+      setIsOnNeedDriverButtonVisible(
+        scrollY > NAVIGATION_CONSTANTS.SCROLL_THRESHOLDS.HEADER_OPACITY
+      );
+    }
+  }, [isMobile, scrollY]);
 
   // Event handlers
   const handleLogoClick = () => {
@@ -94,6 +107,7 @@ export const useNavigation = () => {
     menuItems,
     isDarkMode,
     selectedKey,
+    isOnNeedDriverButtonVisible,
 
     // Actions
     handleLogoClick,

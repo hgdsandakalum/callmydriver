@@ -25,7 +25,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   showThemeToggle = true,
   showNotifications = false,
   showUser = true,
-  isUserLoggedIn = true,
+  isUserLoggedIn = false,
 }) => {
   const isMobile = useIsMobileDevice(NAVIGATION_CONSTANTS.BREAKPOINTS.MOBILE);
   const {
@@ -43,29 +43,30 @@ export const Navigation: React.FC<NavigationProps> = ({
     handleLogout,
     handleNeedDriverClick,
     handleMenuClick,
+    isOnNeedDriverButtonVisible,
   } = useNavigation();
 
   const headerBackground = `rgba(239, 131, 84, ${
     isMobile
       ? "1"
       : scrollY > NAVIGATION_CONSTANTS.SCROLL_THRESHOLDS.HEADER_OPACITY
-      ? "0.9"
-      : "1"
+      ? "1"
+      : "0"
   })`;
 
   return (
     <ConfigProvider theme={THEME_CONFIG}>
-      <div className="fixed top-0 lg:top-[10px] left-0 right-0 z-50 flex justify-center">
+      <div className="fixed top-0 lg:top-[10px] inset-x-0 z-50 w-[100svw] lg:w-auto">
         <Header
-          className={`w-full lg:w-[75%] !px-0 ${className}`}
+          className={`w-full lg:w-[75%] mx-auto !px-0 ${className}`}
           style={{
             background: headerBackground,
             borderBottom: "none",
-            borderRadius: isMobile ? "0px" : "8px",
+            borderRadius: isMobile ? "0px" : "50px",
             transition: "background-color 0.3s ease",
           }}
         >
-          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 h-full flex items-center justify-between">
+          <div className="max-w-full lg:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 h-full flex items-center justify-between">
             {/* Header Section */}
             <NavigationHeader
               logoIcon={logoIcon}
@@ -96,6 +97,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               onLoginClick={handleLoginNavigation}
               onLogoutClick={handleLogout}
               onNeedDriverClick={handleNeedDriverClick}
+              onNeedDriverButtonVisible={isOnNeedDriverButtonVisible}
             />
           </div>
         </Header>
