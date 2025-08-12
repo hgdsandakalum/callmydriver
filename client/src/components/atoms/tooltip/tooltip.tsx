@@ -2,6 +2,10 @@ import React from "react";
 import AntTooltip from "antd/es/tooltip";
 import { ConfigProvider } from "antd";
 
+type TooltipStyles = Partial<
+  Record<"root" | "arrow" | "content" | "popup" | "title", React.CSSProperties>
+>;
+
 interface TooltipProps {
   title: string;
   color?: string;
@@ -25,7 +29,7 @@ interface TooltipProps {
   trigger?: "hover" | "click";
   children?: React.ReactNode;
   onOpenChange?: (open: boolean) => void;
-  styles?: any;
+  styles?: TooltipStyles;
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({

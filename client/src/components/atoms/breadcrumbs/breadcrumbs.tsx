@@ -25,12 +25,12 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
     const breadcrumbs: BreadcrumbItem[] = [];
 
     // Add admin
-    if (paths[0] === "admin") {
-      breadcrumbs.push({
-        title: "Admin",
-        path: ROUTES.ADMIN,
-      });
-    }
+    // if (paths[0] === "admin") {
+    //   breadcrumbs.push({
+    //     title: "Admin",
+    //     path: ROUTES.ADMIN,
+    //   });
+    // }
 
     // Add other segments
     let currentPath = "";

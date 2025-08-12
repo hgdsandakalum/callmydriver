@@ -27,7 +27,7 @@ export interface MenuProps {
   style?: CSSProperties;
   inlineCollapsed?: boolean;
   openKeys?: string[];
-  onOpenChange?: any;
+  onOpenChange?: AntMenuProps["onOpenChange"];
 }
 
 interface LevelKeysProps {
@@ -82,8 +82,11 @@ export const Menu: React.FC<MenuProps> = ({
     }
   };
 
-  const expandIconDown = (props: any) => {
-    const isOpen = stateOpenKeys?.includes(props.eventKey as string);
+  const expandIconDown = (
+    props: SubMenuProps & { eventKey?: React.Key; isOpen?: boolean }
+  ) => {
+    const isOpen =
+      props.isOpen ?? stateOpenKeys?.includes((props.eventKey as string) || "");
     return (
       <DownOutlined style={{ transform: `rotate(${isOpen ? 180 : 0}deg)` }} />
     );

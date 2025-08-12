@@ -33,6 +33,7 @@ export interface ButtonProps {
   onKeyPress?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
   customHeight?: string | number;
+  style?: React.CSSProperties;
 }
 
 const getFontSize = (size: ButtonSize): string => {
@@ -256,7 +257,7 @@ export const Button = React.memo(
           iconPosition={props.iconPosition}
           style={{
             height: props.customHeight,
-            ...((props as any).style || {}),
+            ...(props.style as React.CSSProperties | undefined),
           }}
         >
           {props.children || (

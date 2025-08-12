@@ -122,8 +122,8 @@ export default function Features() {
             Why Choose SafeRide?
           </h2>
           <p className="text-xl color-secondary max-w-3xl mx-auto">
-            We're committed to providing the safest, most reliable designated
-            driver service
+            We&apos;re committed to providing the safest, most reliable
+            designated driver service
           </p>
         </div>
 

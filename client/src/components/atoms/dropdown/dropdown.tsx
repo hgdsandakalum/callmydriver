@@ -28,12 +28,7 @@ export interface DropdownProps {
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
   autoAdjustOverflow?: boolean;
   autoFocus?: boolean;
-  onMenuClick?: (info: {
-    key: string;
-    keyPath: string[];
-    item: any;
-    domEvent: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
-  }) => void;
+  onMenuClick?: MenuProps["onClick"];
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({

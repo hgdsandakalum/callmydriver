@@ -5,7 +5,7 @@ import type {
   FormListFieldData,
   FormListOperation,
 } from "antd/es/form";
-import { PlusIcon, MinusIcon } from "../../../../public/icons/icons";
+// import { PlusIcon, MinusIcon } from "../../../../public/icons/icons";
 
 const { List } = Form;
 
@@ -55,7 +55,7 @@ export const FormList: React.FC<FormListProps> = ({
             <Button
               type="dashed"
               onClick={() => operation.add()}
-              icon={<PlusIcon />}
+              // icon={<PlusIcon />}
               className="w-full"
               {...addButtonProps}
             >
@@ -70,7 +70,7 @@ export const FormList: React.FC<FormListProps> = ({
                   key={field.key}
                   type="text"
                   danger
-                  icon={<MinusIcon />}
+                  // icon={<MinusIcon />}
                   onClick={() => operation?.remove(field?.name)}
                   {...removeButtonProps}
                 >

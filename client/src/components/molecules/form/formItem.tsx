@@ -2,7 +2,7 @@ import React from "react";
 import { ConfigProvider, Form, Tooltip } from "antd";
 import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
-import { InfoCircleIcon } from "../../../../public/icons/icons";
+// import { InfoCircleIcon } from "../../../../public/icons/icons";
 
 const { Item } = Form;
 
@@ -27,8 +27,8 @@ interface FormItemProps {
   validateDebounce?: number;
   fullWidth?: boolean;
   className?: string;
-  getValueFromEvent?: any;
-  normalize?: (value: any) => string;
+  getValueFromEvent?: (e: unknown) => unknown;
+  normalize?: (value: unknown) => string;
   tooltip?: string;
   help?: string;
   validateStatus?: "success" | "warning" | "error" | "validating";
@@ -56,7 +56,8 @@ export const FormItem: React.FC<FormItemProps> = ({
         {props.label}
         {tooltip && (
           <Tooltip title={tooltip}>
-            <InfoCircleIcon className="text-gray-400 cursor-help" />
+            {/* <InfoCircleIcon className="text-gray-400 cursor-help" /> */}
+            <span>test</span>
           </Tooltip>
         )}
       </div>

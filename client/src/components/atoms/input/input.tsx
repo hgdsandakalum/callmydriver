@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import AntInput from "antd/es/input";
 import ConfigProvider from "antd/es/config-provider";
-import { SearchIcon } from "../../../../public/icons/icons";
+// import { SearchIcon } from "../../../../public/icons/icons";
 
 const { TextArea } = AntInput;
 
@@ -267,7 +267,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         size={size as "small" | "middle" | "large"}
         value={inputValue}
         onChange={handleInputChange}
-        prefix={<SearchIcon />}
+        // prefix={<SearchIcon />}
         enterButton={
           <button className="bg-background text-foreground px-6 py-2 rounded font-bold flex items-center gap-2 h-[50px]">
             検索
