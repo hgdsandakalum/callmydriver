@@ -2,8 +2,14 @@
 
 import React from "react";
 import { HeroSection } from "../HeroSection";
-import { NavigationItem } from "../HeroSection/_components/Navigation";
 import type { SlideContent } from "../HeroSection";
+
+// Define NavigationItem type locally since the original file was deleted
+interface NavigationItem {
+  href: string;
+  label: string;
+  key: string;
+}
 import { cn } from "@/utils";
 
 interface PageHeaderProps {
@@ -32,4 +38,4 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 };
 
 export { PageHeader };
-export type { PageHeaderProps };
+export type { PageHeaderProps, NavigationItem };
