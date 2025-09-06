@@ -55,15 +55,15 @@ const getButtonClasses = (
   const fontSize = getFontSize(size);
 
   const heightClasses = {
-    small: "!h-[30px]",
-    middle: "!h-[40px]",
-    large: "!h-[50px]",
+    small: "!h-[24px] md:!h-[30px]",
+    middle: "!h-[32px] md:!h-[40px]",
+    large: "!h-[40px] md:!h-[50px]",
   };
 
   const paddingClasses = {
-    small: "!py-[8px] !px-[5px]",
-    middle: "!py-[11px] !px-[10px]",
-    large: "!py-[15px] !px-[15px]",
+    small: "!py-[6px] !px-[4px] md:!py-[8px] md:!px-[5px]",
+    middle: "!py-[8px] !px-[8px] md:!py-[11px] md:!px-[10px]",
+    large: "!py-[10px] !px-[10px] md:!py-[15px] md:!px-[15px]",
   };
 
   // Disabled styles override all
@@ -74,19 +74,19 @@ const getButtonClasses = (
   }
 
   const variantClasses: Record<ButtonVariant, string> = {
-    primary: `!bg-primary !text-white hover:!opacity-90 ${
+    primary: `!bg-primary !text-foreground hover:!opacity-90 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
-    secondary: `!bg-secondary !text-white hover:!opacity-70 ${
+    secondary: `!bg-secondary !text-foreground hover:!opacity-70 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
-    secondaryAccent: `!bg-white !text-secondary hover:!opacity-70 ${
+    secondaryAccent: `!bg-foreground !text-secondary hover:!opacity-70 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
-    white: `!bg-white !text-primary-dark hover:!bg-primary-dark hover:!text-white ${
+    white: `!bg-foreground !text-primary hover:!bg-foreground/90 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
-    danger: `!bg-red-700 !text-white hover:!bg-red-600 ${
+    danger: `!bg-red-700 !text-foreground hover:!bg-red-600 ${
       customHeight ? "" : heightClasses[size]
     } ${fontSize}`,
     custom: `${customHeight ? "" : heightClasses[size]} ${fontSize}`,
@@ -100,7 +100,7 @@ const getButtonClasses = (
         : variant === "secondary"
         ? "!border-secondary !text-secondary hover:!border-secondary hover:!text-secondary"
         : variant === "white"
-        ? "!border-white !text-white hover:!border-white hover:!text-white"
+        ? "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
         : variant === "custom"
         ? ""
         : "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
@@ -111,7 +111,7 @@ const getButtonClasses = (
         : variant === "secondary"
         ? "!border-secondary !text-secondary hover:!border-secondary hover:!text-secondary"
         : variant === "white"
-        ? "!border-white !text-white hover:!border-white hover:!text-white"
+        ? "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
         : variant === "custom"
         ? ""
         : "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
@@ -125,16 +125,16 @@ const getButtonClasses = (
               : variant === "secondary"
               ? "secondary"
               : variant === "white"
-              ? "white"
-              : "foreground"
+              ? "foreground"
+              : "background"
           } hover:!text-${
             variant === "primary"
               ? "primary"
               : variant === "secondary"
               ? "secondary"
               : variant === "white"
-              ? "white"
-              : "foreground"
+              ? "foreground"
+              : "background"
           }`
     } ${fontSize}`,
     text: `${
@@ -146,24 +146,24 @@ const getButtonClasses = (
               : variant === "secondary"
               ? "secondary"
               : variant === "white"
-              ? "white"
-              : "foreground"
+              ? "foreground"
+              : "background"
           } hover:!text-${
             variant === "primary"
               ? "primary"
               : variant === "secondary"
               ? "secondary"
               : variant === "white"
-              ? "white"
-              : "foreground"
+              ? "foreground"
+              : "background"
           } hover:!bg-${
             variant === "primary"
               ? "primary"
               : variant === "secondary"
               ? "secondary"
               : variant === "white"
-              ? "white"
-              : "foreground"
+              ? "primary-dark"
+              : "background"
           } hover:!bg-opacity-10`
     } ${fontSize}`,
   };
@@ -188,7 +188,7 @@ export const Button = React.memo(
       () =>
         classNames(
           getButtonClasses(type, variant, size, disabled, props.customHeight),
-          "!font-sans relative transition-all duration-300",
+          "!font-quicksand relative transition-all duration-300",
           customClass,
           props.className
         ),

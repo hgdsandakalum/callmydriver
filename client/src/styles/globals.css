@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8F8F8;
+  --background: rgb(248, 248, 248);
   --foreground: #141414;
-  --primary: #FF7D1E; 
+  --primary: rgb(255, 125, 30); 
   --primary-dark: #E05E00;
   --secondary: #64748B;
   --color-dark-blue: #2D3142;
   --color-white: #FFFFFF;
   
+}
+
+@theme {
+  --breakpoint-xs: 390px;
 }
 
 @theme inline {
@@ -17,8 +21,8 @@
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-secondary: var(--secondary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-quicksand: var(--font-quicksand);
+  --font-dm-serif-display: var(--font-dm-serif-display);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,11 +32,46 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Use dynamic viewport units for better mobile experience */
+:root {
+  --viewport-height: 100vh;
+  --viewport-height-dynamic: 100dvh;
+  --safe-area-top: env(safe-area-inset-top, 0);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0);
 }
+
+/* Support for dynamic viewport height */
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+  }
+}
+
+body {
+    background: var(--foreground);
+    color: var(--background);
+    font-family: var(--font-quicksand);
+    /* Prevent scroll bounce on mobile */
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    min-height: 100dvh;
+  }
+
+  html {
+    /* Prevent scroll bounce on mobile */
+    overscroll-behavior: none;
+    height: -webkit-fill-available;
+  }
+
+  #__next {
+    /* Prevent scroll bounce on mobile */
+    overscroll-behavior: none;
+    height: 100%;
+    height: 100dvh;
+  }
+
 
 /* Scroll Snapping Styles */
 .scroll-container {
@@ -80,15 +119,17 @@ body {
 }
 
 .navigation-drawer .ant-drawer-content-wrapper {
-  top: 64px !important;
+   width: 100dvw !important;
 }
 
 .navigation-drawer .ant-drawer-body {
   overflow: hidden !important;
+  padding-top: 90px !important;
+  background-color: var(--background) !important;
 }
 
 .navigation-drawer .ant-menu-title-content {
-  color: var(--color-dark-blue) !important;
+  color: var(--foreground) !important;
   font-size: 16px !important;
   font-weight: 600 !important;
 }
@@ -98,7 +139,7 @@ body {
 }
 
 .navigation-drawer .ant-menu-root.ant-menu-vertical > li {
-  border-bottom: 1px solid #f0f0f0 !important;
+  border-bottom: 1px solid var(--color-secondary) !important;
 }
 
 .navigation-drawer .ant-menu-item-selected .ant-menu-title-content {
@@ -117,4 +158,36 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Snake-like moving glow using layered background gradients */
+.nav-draw {
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* Remove previous outline */
+.nav-draw::before {
+  content: none;
+}
+
+/* Bottom-only animated bar */
+.nav-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px; /* thickness */
+  width: 95%; /* tail length */
+  background: #ff7d1e;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  animation: nav-bottom-sweep 4s linear infinite alternate;
+}
+
+@keyframes nav-bottom-sweep {
+  0%   { left: 0%; }
+  100% { left: 100%; transform: translateX(-100%); }
 }

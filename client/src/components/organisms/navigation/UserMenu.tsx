@@ -84,7 +84,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({
     <Button
       variant="white"
       type="text"
-      shape="default"
+      shape="round"
       onClick={onLoginClick}
       icon={<UserOutline className="text-lg" />}
       iconPosition="start"

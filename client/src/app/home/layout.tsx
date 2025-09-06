@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/organisms/navigation";
 import { Footer } from "@/components/organisms/footer";
 import ScrollToTop from "@/components/atoms/scrollToTop";
+import { Header } from "@/components/organisms/Header";
+import { NAVIGATION_CONSTANTS } from "@/constants/navigation.constant";
 
 export default function RootLayout({
   children,
@@ -8,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white">
+    <div className="bg-foreground max-w-[calc(100dvw-4px)] sm:max-w-screen mx-0 sm:mx-auto overflow-hidden">
       <Navigation />
       <main>{children}</main>
       <ScrollToTop />

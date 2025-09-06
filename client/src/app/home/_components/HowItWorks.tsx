@@ -84,7 +84,7 @@ export default function HowItWorks() {
     <section
       ref={sectionRef}
       id="how-it-works"
-      className=" flex items-center py-20 bg-white"
+      className=" flex items-center py-20 bg-foreground"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="how-it-works-header text-center mb-16">

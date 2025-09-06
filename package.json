@@ -7,6 +7,11 @@
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
   },
   "devDependencies": {
+    "@types/react-slick": "^0.23.13",
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "react-slick": "^0.31.0",
+    "usehooks-ts": "^3.1.1"
   }
-} 
+}

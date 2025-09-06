@@ -64,6 +64,7 @@ export default function CTA() {
   return (
     <section
       ref={sectionRef}
+      id="contact"
       className=" flex items-center py-20 bg-gradient-to-r from-dark-blue to-blue-gray"
     >
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 w-full">

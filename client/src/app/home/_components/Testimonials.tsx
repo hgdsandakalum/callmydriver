@@ -77,7 +77,11 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section ref={sectionRef} className=" flex items-center py-20 bg-white">
+    <section
+      ref={sectionRef}
+      id="testimonials"
+      className=" flex items-center py-20 bg-white"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="testimonials-header text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold color-dark-blue mb-4">
