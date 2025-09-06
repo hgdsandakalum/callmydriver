@@ -17,20 +17,20 @@ export const useNavigation = () => {
     useState(false);
 
   // Update menu items based on mobile state
-  useEffect(() => {
-    if (isMobile) {
-      setMenuItems([
-        {
-          href: "#",
-          label: "Home",
-          key: "home",
-        },
-        ...BASE_MENU_ITEMS,
-      ]);
-    } else {
-      setMenuItems(BASE_MENU_ITEMS);
-    }
-  }, [isMobile]);
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     setMenuItems([
+  //       {
+  //         href: "#",
+  //         label: "Home",
+  //         key: "home",
+  //       },
+  //       ...BASE_MENU_ITEMS,
+  //     ]);
+  //   } else {
+  //     setMenuItems(BASE_MENU_ITEMS);
+  //   }
+  // }, [isMobile]);
 
   // Intersection observer for active menu highlighting
   const { selectedKey, setSelectedKey, clearSelection } =
@@ -98,6 +98,11 @@ export const useNavigation = () => {
 
   const handleMenuClick = (key: string) => {
     setSelectedKey(key);
+    // Find the corresponding menu item and scroll to it
+    const menuItem = menuItems.find((item) => item.key === key);
+    if (menuItem && menuItem.href.startsWith("#")) {
+      scrollToElement(menuItem.href.substring(1)); // Remove the # symbol
+    }
   };
 
   return {

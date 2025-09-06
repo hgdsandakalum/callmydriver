@@ -16,7 +16,7 @@ interface UseIntersectionObserverOptions {
 export const useIntersectionObserver = ({
   menuItems,
   rootMargin = "-20% 0px -20% 0px",
-  threshold = 0.1,
+  threshold = 0.5,
   onSectionVisible,
 }: UseIntersectionObserverOptions) => {
   const [selectedKey, setSelectedKey] = useState<string>("");

@@ -1,9 +1,8 @@
 import React from "react";
 import { SteeringWheel, Menu as MenuIcon, X } from "../../../../public/icons";
 import { NAVIGATION_CONSTANTS } from "@/constants";
-
+import Image from "next/image";
 interface NavigationHeaderProps {
-  logoIcon?: React.ReactNode;
   onLogoClick: () => void;
   isMobile: boolean;
   mobileMenuOpen: boolean;
@@ -11,14 +10,11 @@ interface NavigationHeaderProps {
 }
 
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
-  logoIcon,
   onLogoClick,
   isMobile,
   mobileMenuOpen,
   onMobileMenuToggle,
 }) => {
-  const defaultLogoIcon = <SteeringWheel className="h-8 w-8 text-white" />;
-
   return (
     <div className="flex items-center space-x-2">
       {/* Mobile Menu Toggle */}
@@ -27,7 +23,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
           <div className="relative w-6 h-6">
             <MenuIcon
               onClick={onMobileMenuToggle}
-              className={`!text-2xl absolute inset-0 transition-all duration-${
+              className={`!text-2xl text-white absolute inset-0 transition-all duration-${
                 NAVIGATION_CONSTANTS.ANIMATION.DURATION
               } ${
                 mobileMenuOpen
@@ -37,7 +33,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
             />
             <X
               onClick={onMobileMenuToggle}
-              className={`!text-2xl absolute inset-0 transition-all duration-${
+              className={`!text-2xl text-white absolute inset-0 transition-all duration-${
                 NAVIGATION_CONSTANTS.ANIMATION.DURATION
               } ${
                 mobileMenuOpen
@@ -54,7 +50,12 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         className="flex items-center space-x-2 cursor-pointer"
         onClick={onLogoClick}
       >
-        {logoIcon || defaultLogoIcon}
+        <Image
+          src="/images/call-my-driver-logo-white.png"
+          alt="Logo"
+          width={32}
+          height={32}
+        />
       </div>
     </div>
   );

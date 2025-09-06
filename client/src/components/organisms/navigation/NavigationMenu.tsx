@@ -42,7 +42,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
         expandIcon={false}
         inlineCollapsed={false}
         width={"100%"}
-        className="border-none !bg-transparent min-w-0 flex-1 justify-center !text-[15px]"
+        className="border-none !bg-transparent min-w-0 flex-1 justify-center !text-[15px] !font-quicksand"
       />
     </div>
   );
