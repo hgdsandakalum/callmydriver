@@ -40,7 +40,7 @@ export default function DriverCard() {
   }, []);
 
   return (
-    <div className="relative order-first lg:order-last font-quicksand">
+    <div className="relative order-first lg:order-last font-roboto">
       <div
         ref={cardRef}
         className="bg-transparent backdrop-blur-xl w-full md:w-[400px] rounded-2xl shadow-2xl p-4 sm:p-6 transform rotate-3 hover:rotate-0 transition-transform duration-400 border border-foreground max-w-sm mx-auto lg:max-w-none"

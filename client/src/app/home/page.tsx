@@ -1,5 +1,13 @@
 "use client";
-import { HowItWorks, Features, Safety, Testimonials, CTA } from "./_components";
+import {
+  HowItWorks,
+  Features,
+  Safety,
+  Testimonials,
+  CTA,
+  Stats,
+  IntroBooking,
+} from "./_components";
 import { Header } from "@/components/organisms/Header";
 
 export default function Home() {
@@ -23,6 +31,8 @@ export default function Home() {
           ],
         }}
       />
+      <IntroBooking />
+      <Stats />
       <HowItWorks />
       <Features />
       <Safety />

@@ -10,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-foreground max-w-[calc(100dvw-4px)] sm:max-w-screen mx-0 sm:mx-auto overflow-hidden">
+    <div className="bg-foreground max-w-[100dvw] sm:max-w-screen mx-0 sm:mx-auto overflow-hidden">
       <Navigation />
       <main>{children}</main>
       <ScrollToTop />

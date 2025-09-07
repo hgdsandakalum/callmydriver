@@ -24,7 +24,7 @@ import {
   FiBell,
   FiChevronUp,
 } from "react-icons/fi";
-import { FaRegStar, FaArrowRight } from "react-icons/fa";
+import { FaRegStar, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import {
   HiOutlineUser,
@@ -34,6 +34,12 @@ import {
   HiOutlineHeart,
   HiOutlineLocationMarker,
 } from "react-icons/hi";
+import {
+  IoIosArrowForward,
+  IoIosArrowBack,
+  IoIosArrowDown,
+  IoIosArrowUp,
+} from "react-icons/io";
 
 export const SteeringWheel = PiSteeringWheelFill;
 export const Users = FiUsers;
@@ -64,3 +70,8 @@ export const HelpOutline = IoHelpCircleOutline;
 export const LogoutOutline = IoLogOutOutline;
 export const BellOutline = FiBell;
 export const ChevronUp = FiChevronUp;
+export const MapMarker = FaMapMarkerAlt;
+export const ArrowForward = IoIosArrowForward;
+export const ArrowBack = IoIosArrowBack;
+export const ArrowDown = IoIosArrowDown;
+export const ArrowUp = IoIosArrowUp;

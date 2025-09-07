@@ -17,12 +17,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ heroProps, className }) => {
   return (
-    <div
-      className={cn(
-        "bg-fixed relative px-1 sm:px-2 md:px-3 pt-1 sm:pt-2 md:pt-3",
-        className
-      )}
-    >
+    <div className={cn("bg-fixed relative", className)}>
       <HeroSection {...heroProps} />
     </div>
   );

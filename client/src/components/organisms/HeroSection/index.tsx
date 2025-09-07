@@ -229,7 +229,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     >
       <motion.div
         className={cn(
-          "flex justify-center bg-cover bg-center rounded-xl p-4 sm:p-6 md:p-8 w-full min-h-[calc(100dvh-16px)] xs:min-h-[calc(80dvh)] md:min-h-[calc(65dvh)] h-auto items-center pt-[2dvh] sm:pt-0"
+          "flex justify-center bg-cover bg-center p-4 sm:p-6 md:p-8 w-full min-h-[calc(100dvh-16px)] xs:min-h-[calc(90dvh)] md:min-h-[calc(75dvh)] lg:min-h-[calc(75dvh)] xl:min-h-[calc(75dvh)] h-auto items-center pt-[2dvh] sm:pt-0"
         )}
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 125, 30, 0.5)), url(${slide.backgroundImage})`,
@@ -237,28 +237,28 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Overlay */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10 rounded-xl"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
 
         {/* Main Content */}
         <motion.div
           className={cn(
-            "container mx-auto max-w-screen-xl flex flex-col lg:flex-row items-center justify-center gap-[4dvh] sm:gap-8 md:gap-2 z-20 relative px-0 sm:px-6 md:px-8 pt-12"
+            "container mx-auto max-w-screen-xl flex flex-col lg:flex-row items-center justify-center gap-[4dvh] sm:gap-8 md:gap-2 z-20 relative px-0 sm:px-6 md:px-8 lg:px-0 xl:px-8 pt-12"
           )}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div
-            className="w-full lg:w-2/3 text-foreground mb-4 sm:mb-6 md:mb-8 !font-dm-serif-display !text-[32px] sm:!text-[48px] md:!text-[64px] !font-normal break-words flex flex-col items-center lg:items-start"
+            className="w-full lg:w-[50%] xl:w-2/3 text-foreground mb-4 sm:mb-6 md:mb-8 !font-dm-serif-display !text-[32px] sm:!text-[48px] md:!text-[64px] !font-normal break-words flex flex-col items-center lg:items-start"
             variants={titleVariants}
           >
             <div className="flex justify-center lg:justify-start mb-2">
               <HeroBadge />
             </div>
-            <div className="block text-center md:text-left text-[24px] sm:text-[52px] md:text-[64px]">
+            <div className="block text-center lg:text-left text-[24px] sm:text-[52px] md:text-[64px]c xl:text-[64px]">
               {staticText}
             </div>
-            <div className="block relative min-h-[1.2em] text-center lg:text-left text-[24px] sm:text-[52px] md:text-[64px]">
+            <div className="block relative min-h-[1.2em] text-center lg:text-left text-[24px] sm:text-[52px] md:text-[64px] lg:text-[50px] xl:text-[64px]">
               <span className="inline-block relative">
                 {displayedText}
                 {isTyping && (
@@ -274,7 +274,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 )}
               </span>
             </div>
-            <div className="w-full lg:w-2/3 mt-2 md:mt-4 text-center lg:text-left text-base md:text-lg font-quicksand">
+            <div className="w-full lg:w-2/3 mt-2 md:mt-4 text-center lg:text-left text-base md:text-lg font-roboto">
               {description}
             </div>
             <div className="flex flex-row sm:flex col md:flex-row w-full justify-center lg:justify-start gap-4 mt-6">
@@ -284,7 +284,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 label="Need a Driver?"
                 icon={<SteeringWheel className="text-lg" />}
                 onClick={() => {}}
-                className="!font-semibold w-full md:w-1/3"
+                className="!font-semibold w-full md:w-1/3 lg:w-1/2 xl:w-1/3"
               />
               <Button
                 variant="white"
@@ -292,13 +292,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 size="large"
                 label="Call Us Now"
                 onClick={() => {}}
-                className="!font-semibold w-full md:w-1/3"
+                className="!font-semibold w-full md:w-1/3 lg:w-1/2 xl:w-1/3"
               />
             </div>
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-1/3 rotate-3 hover:rotate-0 transition-transform duration-300"
+            className="w-full lg:w-[50%] xl:w-1/3 rotate-3 hover:rotate-0 transition-transform duration-300"
             variants={descriptionVariants}
           >
             <DriverCard />

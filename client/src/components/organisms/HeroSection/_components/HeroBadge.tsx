@@ -30,7 +30,7 @@ export default function HeroBadge() {
   return (
     <div
       ref={badgeRef}
-      className=" bg-primary/20 border border-primary tracking-wide font-quicksand text-white inline-flex items-center px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:scale-105"
+      className=" bg-primary/20 border border-primary tracking-wide font-roboto text-white inline-flex items-center px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:scale-105"
     >
       Available 24/7 • Trusted Drivers • Your Vehicle
     </div>
