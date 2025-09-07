@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quicksand, DM_Serif_Display } from "next/font/google";
+import { Quicksand, DM_Serif_Display, Roboto } from "next/font/google";
 import "../styles/globals.css";
 
 const geistSans = Quicksand({
@@ -9,6 +9,12 @@ const geistSans = Quicksand({
 
 const geistMono = DM_Serif_Display({
   variable: "--font-dm-serif-display",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -58,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
       >
         {children}
       </body>

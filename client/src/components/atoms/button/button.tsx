@@ -55,9 +55,9 @@ const getButtonClasses = (
   const fontSize = getFontSize(size);
 
   const heightClasses = {
-    small: "!h-[24px] md:!h-[30px]",
-    middle: "!h-[32px] md:!h-[40px]",
-    large: "!h-[40px] md:!h-[50px]",
+    small: "!h-[24px] md:!h-[30px] !font-semibold",
+    middle: "!h-[32px] md:!h-[40px] !font-semibold",
+    large: "!h-[40px] md:!h-[50px] !font-semibold",
   };
 
   const paddingClasses = {
@@ -188,7 +188,7 @@ export const Button = React.memo(
       () =>
         classNames(
           getButtonClasses(type, variant, size, disabled, props.customHeight),
-          "!font-quicksand relative transition-all duration-300",
+          "!font-roboto relative transition-all duration-300",
           customClass,
           props.className
         ),

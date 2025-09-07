@@ -6,6 +6,7 @@ import {
   Testimonials,
   CTA,
   Stats,
+  IntroBooking,
 } from "./_components";
 import { Header } from "@/components/organisms/Header";
 
@@ -30,6 +31,7 @@ export default function Home() {
           ],
         }}
       />
+      <IntroBooking />
       <Stats />
       <HowItWorks />
       <Features />

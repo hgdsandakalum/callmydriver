@@ -23,6 +23,7 @@
   --color-secondary: var(--secondary);
   --font-quicksand: var(--font-quicksand);
   --font-dm-serif-display: var(--font-dm-serif-display);
+  --font-roboto: var(--font-roboto);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,7 +51,7 @@
 body {
     background: var(--foreground);
     color: var(--background);
-    font-family: var(--font-quicksand);
+    font-family:  var(--font-roboto);
     /* Prevent scroll bounce on mobile */
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
@@ -190,4 +191,42 @@ body {
 @keyframes nav-bottom-sweep {
   0%   { left: 0%; }
   100% { left: 100%; transform: translateX(-100%); }
+}
+
+/* Booking form global styles */
+.booking-form .ant-input,
+.booking-form .ant-input-affix-wrapper,
+.booking-form .ant-select-selector {
+  border-radius: 9999px !important; /* rounded-full */
+}
+
+/* Placeholder color */
+.booking-form .ant-input::placeholder {
+  color: color-mix(in srgb, var(--secondary) 60%, transparent) !important;
+}
+
+/* Hover state */
+.booking-form .ant-input:hover,
+.booking-form .ant-input-affix-wrapper:hover,
+.booking-form .ant-select-selector:hover {
+  border-color: var(--primary) !important;
+}
+
+/* Focus ring */
+.booking-form .ant-input:focus,
+.booking-form .ant-input-affix-wrapper-focused,
+.booking-form .ant-select-focused .ant-select-selector {
+  border-color: var(--primary) !important;
+}
+
+/* Select tags and arrow color alignment */
+.booking-form .ant-select-selector .ant-select-selection-placeholder,
+.booking-form .ant-select-selector .ant-select-selection-item {
+  color: var(--secondary) !important;
+}
+
+/* Ensure affix icons align nicely */
+.booking-form .ant-input-affix-wrapper .ant-input-suffix,
+.booking-form .ant-input-affix-wrapper .ant-input-prefix {
+  color: var(--secondary) !important;
 }

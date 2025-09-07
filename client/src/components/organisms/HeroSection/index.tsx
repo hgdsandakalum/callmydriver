@@ -229,7 +229,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     >
       <motion.div
         className={cn(
-          "flex justify-center bg-cover bg-center rounded-xl p-4 sm:p-6 md:p-8 w-full min-h-[calc(100dvh-16px)] xs:min-h-[calc(90dvh)] md:min-h-[calc(75dvh)] lg:min-h-[calc(75dvh)] xl:min-h-[calc(75dvh)] h-auto items-center pt-[2dvh] sm:pt-0"
+          "flex justify-center bg-cover bg-center p-4 sm:p-6 md:p-8 w-full min-h-[calc(100dvh-16px)] xs:min-h-[calc(90dvh)] md:min-h-[calc(75dvh)] lg:min-h-[calc(75dvh)] xl:min-h-[calc(75dvh)] h-auto items-center pt-[2dvh] sm:pt-0"
         )}
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 125, 30, 0.5)), url(${slide.backgroundImage})`,
@@ -237,7 +237,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Overlay */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10 rounded-xl"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
 
         {/* Main Content */}
         <motion.div
@@ -274,7 +274,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 )}
               </span>
             </div>
-            <div className="w-full lg:w-2/3 mt-2 md:mt-4 text-center lg:text-left text-base md:text-lg font-quicksand">
+            <div className="w-full lg:w-2/3 mt-2 md:mt-4 text-center lg:text-left text-base md:text-lg font-roboto">
               {description}
             </div>
             <div className="flex flex-row sm:flex col md:flex-row w-full justify-center lg:justify-start gap-4 mt-6">
