@@ -120,7 +120,7 @@ export const Navigation: React.FC<NavigationProps> = ({
     <ConfigProvider theme={THEME_CONFIG}>
       <div
         className={cn(
-          "fixed z-50 w-[100svw] px-2 sm:px-3 md:px-4 mx-auto transition-[top] duration-400 ease-in-out",
+          "fixed z-50 w-full px-2 sm:px-3 md:px-4 mx-auto transition-[top] duration-400 ease-in-out",
           scrollY > NAVIGATION_CONSTANTS.SCROLL_THRESHOLDS.HEADER_OPACITY
             ? "top-[10px]"
             : "top-[16px] md:top-[20px] lg:top-[24px]",
