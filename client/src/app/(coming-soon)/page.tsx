@@ -50,16 +50,16 @@ export default function ComingSoon() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-blue via-blue-gray to-primary flex items-center justify-center p-8 md:p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary-dark to-background flex items-center justify-center p-8 md:p-4">
       <div
         ref={containerRef}
         className="max-w-4xl mx-auto text-center text-white relative"
       >
         {/* Background decorative elements */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-blue-gray/30 rounded-full blur-lg"></div>
+        <div className="absolute inset-0 z-10">
+          <div className="absolute top-20 left-20 w-48 h-48 bg-primary/70 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary/70 rounded-full blur-2xl"></div>
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary/30 rounded-full blur-lg"></div>
         </div>
 
         {/* Main content */}
