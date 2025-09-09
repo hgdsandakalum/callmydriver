@@ -3,6 +3,7 @@ import { SteeringWheel, Menu as MenuIcon, X } from "../../../../public/icons";
 import { NAVIGATION_CONSTANTS } from "@/constants";
 import Image from "next/image";
 interface NavigationHeaderProps {
+  isScrolled: boolean;
   onLogoClick: () => void;
   isMobile: boolean;
   mobileMenuOpen: boolean;
@@ -10,6 +11,7 @@ interface NavigationHeaderProps {
 }
 
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
+  isScrolled,
   onLogoClick,
   isMobile,
   mobileMenuOpen,
@@ -50,12 +52,36 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         className="flex items-center space-x-2 cursor-pointer"
         onClick={onLogoClick}
       >
-        <Image
-          src="/images/call-my-driver-logo-white.png"
-          alt="Logo"
-          width={32}
-          height={32}
-        />
+        {isScrolled ? (
+          <Image
+            src="/images/logos/logo-white.png"
+            alt="Logo"
+            width={28}
+            height={28}
+          />
+        ) : (
+          <Image
+            src="/images/logos/logo-color.png"
+            alt="Logo"
+            width={28}
+            height={28}
+          />
+        )}
+        {isScrolled ? (
+          <Image
+            src="/images/logos/logoname-white.png"
+            alt="Logo"
+            width={140}
+            height={20}
+          />
+        ) : (
+          <Image
+            src="/images/logos/logoname-color.png"
+            alt="Logo"
+            width={140}
+            height={20}
+          />
+        )}
       </div>
     </div>
   );

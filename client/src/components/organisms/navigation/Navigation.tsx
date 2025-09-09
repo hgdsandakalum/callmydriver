@@ -139,6 +139,9 @@ export const Navigation: React.FC<NavigationProps> = ({
           <div className="relative z-10 px-1 sm:px-3 lg:px-8 h-full flex items-center justify-between">
             {/* Header Section */}
             <NavigationHeader
+              isScrolled={
+                scrollY > NAVIGATION_CONSTANTS.SCROLL_THRESHOLDS.HEADER_OPACITY
+              }
               onLogoClick={handleLogoClick}
               isMobile={isMobile}
               mobileMenuOpen={mobileMenuOpen}
