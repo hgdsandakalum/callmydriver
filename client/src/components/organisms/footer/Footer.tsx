@@ -29,7 +29,6 @@ interface FooterProps {
     href: string;
     icon: React.ComponentType<any>;
   }>;
-  showContactSection?: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -61,7 +60,6 @@ export const Footer: React.FC<FooterProps> = ({
       icon: Linkedin,
     },
   ],
-  showContactSection = true,
 }) => {
   return (
     <ConfigProvider
@@ -90,17 +88,26 @@ export const Footer: React.FC<FooterProps> = ({
     >
       <AntFooter
         id="contact"
-        className={`px-0 ${className}`}
+        className={`px-0 relative ${className}`}
         style={{
           background: "var(--color-background)",
           color: "white",
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {showContactSection && (
-              <div className="w-full">
-                <div className="flex items-center space-x-2 mb-3">
+        {/* Background Image */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 opacity-10 bg-[length:600px] bg-repeat-x bg-bottom"
+          style={{
+            backgroundImage: "url('/images/12218-NO043A.png')",
+          }}
+        />
+
+        {/* Content with relative positioning */}
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row gap-8">
+              <div className="w-full sm:w-2/3">
+                <div className="flex justify-center sm:justify-start items-center gap-2 mb-3">
                   <Image
                     src="/images/logos/logo-color.png"
                     alt="Logo"
@@ -114,11 +121,11 @@ export const Footer: React.FC<FooterProps> = ({
                     height={32}
                   />
                 </div>
-                <Paragraph className="text-foreground mb-4 !font-roboto">
+                <div className="w-full text-center sm:text-left text-foreground mb-4 !font-roboto">
                   Professional designated driver service committed to getting
                   you and your vehicle home safely, 24/7.
-                </Paragraph>
-                <div className="space-y-3">
+                </div>
+                <div className="flex flex-col justify-center items-center sm:items-start gap-3">
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 color-primary" />
                     <span className="!text-foreground">
@@ -133,81 +140,83 @@ export const Footer: React.FC<FooterProps> = ({
                   </div>
                 </div>
               </div>
-            )}
 
-            <div className="w-full flex justify-start md:justify-end">
-              <div>
-                <Title level={4} className="text-foreground mb-4 text-end">
-                  Services
-                </Title>
-                <ul
-                  className="space-y-2 mb-6"
-                  style={{ listStyle: "none", padding: 0, margin: 0 }}
-                >
-                  {services.map((service, index) => (
-                    <li key={index} className="text-end">
-                      <Link
-                        href={service.href || "#"}
-                        className="!text-foreground hover:!text-primary"
-                      >
-                        {service.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="hidden sm:flex w-full sm:w-1/3 justify-end">
+                <div>
+                  <Title level={4} className="text-foreground mb-4 text-end">
+                    Services
+                  </Title>
+                  <ul
+                    className="space-y-2 mb-6"
+                    style={{ listStyle: "none", padding: 0, margin: 0 }}
+                  >
+                    {services.map((service, index) => (
+                      <li key={index} className="text-end">
+                        <Link
+                          href={service.href || "#"}
+                          className="!text-foreground hover:!text-primary"
+                        >
+                          {service.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
 
-                {/* Social Media Icons */}
-                <div className="flex justify-end space-x-4 mt-4">
-                  {socialMedia.map((social, index) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <Link
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="!text-foreground hover:!text-primary transition-colors duration-300"
-                        aria-label={social.name}
-                      >
-                        <IconComponent className="w-5 h-5" />
-                      </Link>
-                    );
-                  })}
+                  {/* Social Media Icons */}
+                  <div className="flex justify-end space-x-4 mt-4">
+                    {socialMedia.map((social, index) => {
+                      const IconComponent = social.icon;
+                      return (
+                        <Link
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="!text-foreground hover:!text-primary transition-colors duration-300"
+                          aria-label={social.name}
+                        >
+                          <IconComponent className="w-5 h-5" />
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <Divider className="border-foreground mt-8 mb-6" />
+            <Divider className="border-foreground mt-8 mb-6" />
 
-          <div className="flex justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-foreground">
-                © 2025 CallMyRide. All rights reserved.
-              </span>
-              <span className="text-sm text-foreground">|</span>
-              <Link
-                href="/privacy-policy"
-                className="text-sm !text-foreground hover:!text-primary"
-              >
-                Privacy Policy
-              </Link>
-              <span className="text-sm text-foreground">|</span>
-              <Link
-                href="/terms-of-service"
-                className="text-sm !text-foreground hover:!text-primary"
-              >
-                Terms of Service
-              </Link>
-            </div>
-            <div className="flex items-center gap-1 text-xs">
-              Designed and developed by
-              <Link
-                href="https://www.google.com"
-                className="text-xs !text-primary hover:!text-foreground"
-              >
-                Nyx Solutions
-              </Link>
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2">
+                <span className="text-sm text-foreground">
+                  © 2025 CallMyRide. All rights reserved.
+                </span>
+                <span className="hidden sm:block text-sm text-foreground">
+                  |
+                </span>
+                <Link
+                  href="/privacy-policy"
+                  className="text-sm !text-foreground hover:!text-primary"
+                >
+                  Privacy Policy
+                </Link>
+                <span className="text-sm text-foreground">|</span>
+                <Link
+                  href="/terms-of-service"
+                  className="text-sm !text-foreground hover:!text-primary"
+                >
+                  Terms of Service
+                </Link>
+              </div>
+              <div className="flex items-center gap-1 text-xs">
+                Designed and developed by
+                <Link
+                  href="https://www.google.com"
+                  className="text-xs !text-primary hover:!text-foreground"
+                >
+                  Nyx Solutions
+                </Link>
+              </div>
             </div>
           </div>
         </div>
