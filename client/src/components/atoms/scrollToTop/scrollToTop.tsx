@@ -35,8 +35,9 @@ export default function ScrollToTop() {
   return (
     <Button
       onClick={handleScrollToTop}
-      className="!fixed !bottom-10 !right-10 !z-50 hover:!scale-110 transition-all duration-300"
+      className="!fixed !bottom-10 !right-5 !z-50 hover:!scale-110 transition-all duration-300"
       aria-label="Scroll to top"
+      shape="circle"
     >
       <ChevronUp className="!text-xl" />
     </Button>

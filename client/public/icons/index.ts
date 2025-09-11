@@ -40,6 +40,7 @@ import {
   IoIosArrowDown,
   IoIosArrowUp,
 } from "react-icons/io";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export const SteeringWheel = PiSteeringWheelFill;
 export const Users = FiUsers;
@@ -75,3 +76,7 @@ export const ArrowForward = IoIosArrowForward;
 export const ArrowBack = IoIosArrowBack;
 export const ArrowDown = IoIosArrowDown;
 export const ArrowUp = IoIosArrowUp;
+export const Facebook = FaFacebook;
+export const Twitter = FaTwitter;
+export const Instagram = FaInstagram;
+export const Linkedin = FaLinkedin;
