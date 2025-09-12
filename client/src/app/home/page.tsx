@@ -32,7 +32,7 @@ export default function Home() {
         }}
       />
       <IntroBooking />
-      <Stats />
+      {/* <Stats /> */}
       <HowItWorks />
       <Features />
       <Safety />

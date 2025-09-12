@@ -1,17 +1,22 @@
 "use client";
-import { Layout, Row, Col, Typography, Divider, ConfigProvider } from "antd";
-import { SteeringWheel, Phone, Mail } from "../../../../public/icons";
+import { Layout, Typography, Divider, ConfigProvider } from "antd";
+import {
+  Phone,
+  Mail,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "../../../../public/icons";
+import Image from "next/image";
+import Link from "next/link";
 
 const { Footer: AntFooter } = Layout;
 const { Title, Text, Paragraph } = Typography;
 
 interface FooterProps {
   className?: string;
-  logoText?: string;
-  logoIcon?: React.ReactNode;
-  description?: string;
   contactInfo?: {
-    emergencyPhone?: string;
     bookingPhone?: string;
     email?: string;
   };
@@ -19,23 +24,16 @@ interface FooterProps {
     label: string;
     href?: string;
   }>;
-  companyLinks?: Array<{
-    label: string;
-    href?: string;
+  socialMedia?: Array<{
+    name: string;
+    href: string;
+    icon: React.ComponentType<any>;
   }>;
-  copyrightText?: string;
-  showContactSection?: boolean;
-  showServicesSection?: boolean;
-  showCompanySection?: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   className = "",
-  logoText = "Call-My-Ride",
-  logoIcon,
-  description = "Professional designated driver service committed to getting you and your vehicle home safely, 24/7.",
   contactInfo = {
-    emergencyPhone: "(555) 911-SAFE",
     bookingPhone: "(555) 123-RIDE",
     email: "support@callmyride.com",
   },
@@ -45,19 +43,24 @@ export const Footer: React.FC<FooterProps> = ({
     { label: "Corporate Accounts" },
     { label: "Event Services" },
   ],
-  companyLinks = [
-    { label: "About Us" },
-    { label: "Safety" },
-    { label: "Careers" },
-    { label: "Contact" },
+  socialMedia = [
+    {
+      name: "Facebook",
+      href: "https://facebook.com/callmyride",
+      icon: Facebook,
+    },
+    {
+      name: "Instagram",
+      href: "https://instagram.com/callmyride",
+      icon: Instagram,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com/company/callmyride",
+      icon: Linkedin,
+    },
   ],
-  copyrightText = "© 2024 Call-My-Ride. All rights reserved. | Privacy Policy | Terms of Service",
-  showContactSection = true,
-  showServicesSection = true,
-  showCompanySection = true,
 }) => {
-  const defaultLogoIcon = <SteeringWheel className="h-8 w-8 color-primary" />;
-
   return (
     <ConfigProvider
       theme={{
@@ -72,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({
         components: {
           Layout: {
             footerBg: "var(--color-dark-blue)",
-            footerPadding: "64px 24px",
+            footerPadding: "48px 24px",
           },
           Typography: {
             colorText: "white",
@@ -85,134 +88,136 @@ export const Footer: React.FC<FooterProps> = ({
     >
       <AntFooter
         id="contact"
-        className={`px-0 ${className}`}
+        className={`px-0 relative ${className}`}
         style={{
-          background: "var(--color-dark-blue)",
+          background: "var(--color-background)",
           color: "white",
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Row gutter={[32, 32]}>
-            {showContactSection && (
-              <Col xs={24} md={12}>
-                <div className="flex items-center space-x-2 mb-6">
-                  {logoIcon || defaultLogoIcon}
-                  <Title level={2} style={{ color: "white", margin: 0 }}>
-                    {logoText}
-                  </Title>
+        {/* Background Image */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 opacity-10 bg-[length:600px] bg-repeat-x bg-bottom"
+          style={{
+            backgroundImage: "url('/images/12218-NO043A.png')",
+          }}
+        />
+
+        {/* Content with relative positioning */}
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row gap-8">
+              <div className="w-full sm:w-2/3">
+                <div className="flex justify-center sm:justify-start items-center gap-2 mb-3">
+                  <Image
+                    src="/images/logos/logo-color.png"
+                    alt="Logo"
+                    width={32}
+                    height={32}
+                  />
+                  <Image
+                    src="/images/logos/logoname-color.png"
+                    alt="Logo"
+                    width={140}
+                    height={32}
+                  />
                 </div>
-                <Paragraph
-                  style={{
-                    color: "var(--color-light-gray)",
-                    marginBottom: 24,
-                    maxWidth: 400,
-                  }}
-                >
-                  {description}
-                </Paragraph>
-                <div className="space-y-3">
+                <div className="w-full text-center sm:text-left text-foreground mb-4 !font-roboto">
+                  Professional designated driver service committed to getting
+                  you and your vehicle home safely, 24/7.
+                </div>
+                <div className="flex flex-col justify-center items-center sm:items-start gap-3">
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 color-primary" />
-                    <Text style={{ color: "var(--color-light-gray)" }}>
-                      Emergency: {contactInfo.emergencyPhone}
-                    </Text>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 color-primary" />
-                    <Text style={{ color: "var(--color-light-gray)" }}>
-                      Booking: {contactInfo.bookingPhone}
-                    </Text>
+                    <span className="!text-foreground">
+                      {contactInfo.bookingPhone}
+                    </span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 color-primary" />
-                    <Text style={{ color: "var(--color-light-gray)" }}>
+                    <span className="!text-foreground">
                       {contactInfo.email}
-                    </Text>
+                    </span>
                   </div>
                 </div>
-              </Col>
-            )}
+              </div>
 
-            {showServicesSection && (
-              <Col xs={12} md={6}>
-                <Title level={4} style={{ color: "white", marginBottom: 16 }}>
-                  Services
-                </Title>
-                <ul
-                  className="space-y-2"
-                  style={{ listStyle: "none", padding: 0, margin: 0 }}
+              <div className="hidden sm:flex w-full sm:w-1/3 justify-end">
+                <div>
+                  <Title level={4} className="text-foreground mb-4 text-end">
+                    Services
+                  </Title>
+                  <ul
+                    className="space-y-2 mb-6"
+                    style={{ listStyle: "none", padding: 0, margin: 0 }}
+                  >
+                    {services.map((service, index) => (
+                      <li key={index} className="text-end">
+                        <Link
+                          href={service.href || "#"}
+                          className="!text-foreground hover:!text-primary"
+                        >
+                          {service.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Social Media Icons */}
+                  <div className="flex justify-end space-x-4 mt-4">
+                    {socialMedia.map((social, index) => {
+                      const IconComponent = social.icon;
+                      return (
+                        <Link
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="!text-foreground hover:!text-primary transition-colors duration-300"
+                          aria-label={social.name}
+                        >
+                          <IconComponent className="w-5 h-5" />
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Divider className="border-foreground mt-8 mb-6" />
+
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2">
+                <span className="text-sm text-foreground">
+                  © 2025 CallMyRide. All rights reserved.
+                </span>
+                <span className="hidden sm:block text-sm text-foreground">
+                  |
+                </span>
+                <Link
+                  href="/privacy-policy"
+                  className="text-sm !text-foreground hover:!text-primary"
                 >
-                  {services.map((service, index) => (
-                    <li key={index}>
-                      <a
-                        href={service.href || "#"}
-                        style={{
-                          color: "var(--color-light-gray)",
-                          textDecoration: "none",
-                          transition: "color 0.2s",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "white";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color =
-                            "var(--color-light-gray)";
-                        }}
-                      >
-                        {service.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </Col>
-            )}
-
-            {showCompanySection && (
-              <Col xs={12} md={6}>
-                <Title level={4} style={{ color: "white", marginBottom: 16 }}>
-                  Company
-                </Title>
-                <ul
-                  className="space-y-2"
-                  style={{ listStyle: "none", padding: 0, margin: 0 }}
+                  Privacy Policy
+                </Link>
+                <span className="text-sm text-foreground">|</span>
+                <Link
+                  href="/terms-of-service"
+                  className="text-sm !text-foreground hover:!text-primary"
                 >
-                  {companyLinks.map((item, index) => (
-                    <li key={index}>
-                      <a
-                        href={item.href || "#"}
-                        style={{
-                          color: "var(--color-light-gray)",
-                          textDecoration: "none",
-                          transition: "color 0.2s",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "white";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color =
-                            "var(--color-light-gray)";
-                        }}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </Col>
-            )}
-          </Row>
-
-          <Divider
-            style={{
-              borderColor: "var(--color-blue-gray)",
-              margin: "48px 0 32px 0",
-            }}
-          />
-
-          <div style={{ textAlign: "center" }}>
-            <Text style={{ color: "var(--color-light-gray)" }}>
-              {copyrightText}
-            </Text>
+                  Terms of Service
+                </Link>
+              </div>
+              <div className="flex items-center gap-1 text-xs">
+                Designed and developed by
+                <Link
+                  href="https://www.google.com"
+                  className="text-xs !text-primary hover:!text-foreground"
+                >
+                  Nyx Solutions
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </AntFooter>

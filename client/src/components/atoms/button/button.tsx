@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import AntButton from "antd/es/button";
 import ConfigProvider from "antd/es/config-provider";
+import type { SizeType } from "antd/es/config-provider/SizeContext";
 import classNames from "classnames";
 
 export type ButtonType = "block" | "dashed" | "link" | "text" | "outlined";
@@ -11,7 +12,7 @@ export type ButtonVariant =
   | "white"
   | "danger"
   | "custom";
-export type ButtonSize = "small" | "middle" | "large";
+export type ButtonSize = "small" | "middle" | "large" | "custom";
 export type ButtonShape = "default" | "circle" | "round";
 
 export interface ButtonProps {
@@ -41,6 +42,7 @@ const getFontSize = (size: ButtonSize): string => {
     small: "!text-[12px]",
     middle: "!text-[14px]",
     large: "!text-[18px]",
+    custom: "text-[14px]",
   };
   return sizes[size];
 };
@@ -55,6 +57,7 @@ const getButtonClasses = (
   const fontSize = getFontSize(size);
 
   const heightClasses = {
+    custom: "",
     small: "!h-[24px] md:!h-[30px] !font-semibold",
     middle: "!h-[32px] md:!h-[40px] !font-semibold",
     large: "!h-[40px] md:!h-[50px] !font-semibold",
@@ -64,6 +67,7 @@ const getButtonClasses = (
     small: "!py-[6px] !px-[4px] md:!py-[8px] md:!px-[5px]",
     middle: "!py-[8px] !px-[8px] md:!py-[11px] md:!px-[10px]",
     large: "!py-[10px] !px-[10px] md:!py-[15px] md:!px-[15px]",
+    custom: "",
   };
 
   // Disabled styles override all
@@ -245,7 +249,7 @@ export const Button = React.memo(
           type={buttonType}
           block={fullWidth}
           shape={props.shape}
-          size={size}
+          size={size as SizeType}
           disabled={disabled}
           ghost={disabled}
           href={props.href}

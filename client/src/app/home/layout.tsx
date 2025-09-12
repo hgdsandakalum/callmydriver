@@ -1,8 +1,6 @@
 import { Navigation } from "@/components/organisms/navigation";
 import { Footer } from "@/components/organisms/footer";
 import ScrollToTop from "@/components/atoms/scrollToTop";
-import { Header } from "@/components/organisms/Header";
-import { NAVIGATION_CONSTANTS } from "@/constants/navigation.constant";
 
 export default function RootLayout({
   children,
