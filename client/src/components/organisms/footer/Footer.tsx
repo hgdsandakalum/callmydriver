@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({
             <Divider className="border-foreground mt-8 mb-6" />
 
             <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
-              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2">
+              <div className="w-full lg:w-auto flex flex-wrap justify-center md:justify-start lg:justify-start items-center gap-x-2">
                 <span className="text-sm text-foreground">
                   © 2025 CallMyRide. All rights reserved.
                 </span>
@@ -208,7 +208,7 @@ export const Footer: React.FC<FooterProps> = ({
                   Terms of Service
                 </Link>
               </div>
-              <div className="flex items-center gap-1 text-xs">
+              <div className="w-full lg:w-auto flex items-center justify-center md:justify-end lg:justify-end gap-1 text-xs">
                 Designed and developed by
                 <Link
                   href="https://www.google.com"
