@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/atoms/card";
-import { Star } from "../../../../public/icons";
+import { Star, StarFilled } from "../../../../public/icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,16 +15,19 @@ export default function Testimonials() {
       text: "SafeRide saved my night! The driver was professional, arrived quickly, and got me home safely after a work event. Highly recommend!",
       name: "Sarah Johnson",
       role: "Marketing Manager",
+      rating: 5,
     },
     {
       text: "I use SafeRide regularly when I&apos;m too tired to drive after long work days. The drivers are always courteous and the service is reliable.",
       name: "Michael Chen",
       role: "Software Engineer",
+      rating: 5,
     },
     {
       text: "Great peace of mind knowing there's a safe alternative when needed. The app is easy to use and the drivers are professional.",
       name: "Emma Rodriguez",
       role: "Teacher",
+      rating: 5,
     },
   ];
 
@@ -80,15 +83,16 @@ export default function Testimonials() {
     <section
       ref={sectionRef}
       id="testimonials"
-      className=" flex items-center py-20 bg-white"
+      className=" flex items-center py-20 bg-foreground min-h-[70dvh]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="testimonials-header text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold color-dark-blue mb-4">
+          <h2 className="text-3xl sm:text-5xl font-medium font-dm-serif-display mb-2">
             What Our Customers Say
           </h2>
-          <p className="text-xl color-blue-gray">
-            Don&apos;t just take our word for it
+          <p className="text-base color-secondary max-w-3xl mx-auto">
+            Don&apos;t just take our word for it. See what our customers have to
+            say.
           </p>
         </div>
 
@@ -100,15 +104,23 @@ export default function Testimonials() {
                 if (el) cardsRef.current[index] = el;
               }}
             >
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-md">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 text-yellow-400 fill-current"
-                      />
-                    ))}
+                    {[...Array(5)].map((_, i) => {
+                      const StarIcon =
+                        i < testimonial.rating ? StarFilled : Star;
+                      return (
+                        <StarIcon
+                          key={i}
+                          className={`w-5 h-5 ${
+                            i < testimonial.rating
+                              ? "text-primary"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      );
+                    })}
                   </div>
                   <p className="color-secondary mb-4">{testimonial.text}</p>
                   <div className="font-semibold color-dark-blue">

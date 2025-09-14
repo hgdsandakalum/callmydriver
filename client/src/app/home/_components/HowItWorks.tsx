@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,22 +14,22 @@ export default function HowItWorks() {
       number: "1",
       title: "Request a Ride",
       description:
-        "Open the app or call our 24/7 hotline. Share your location and we'll match you with a nearby professional driver.",
-      bgColor: "bg-dark-blue",
+        "Request a ride by sharing your location and we'll match you with a nearby professional driver.",
+      image: "/images/City-driver-pana.png",
     },
     {
       number: "2",
       title: "Driver Arrives",
       description:
-        "Your certified driver arrives at your location. They'll drive your vehicle while you relax as a passenger.",
-      bgColor: "bg-primary",
+        "Your verified driver arrives at your location. They'll drive your vehicle while you relax as a passenger.",
+      image: "/images/City-driver-bro.png",
     },
     {
       number: "3",
       title: "Safe Arrival",
       description:
-        "Arrive safely at your destination. Pay securely through the app and rate your experience.",
-      bgColor: "bg-secondary",
+        "Arrive safely at your destination. You can rate your experience after the ride.",
+      image: "/images/Car-driving-pana.png",
     },
   ];
 
@@ -84,14 +85,14 @@ export default function HowItWorks() {
     <section
       ref={sectionRef}
       id="how-it-works"
-      className=" flex items-center py-20 bg-foreground"
+      className=" flex items-center py-20 bg-foreground min-h-[70dvh]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="how-it-works-header text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold color-dark-blue mb-4">
+        <div className="how-it-works-header text-center mb-2">
+          <h2 className="text-3xl sm:text-5xl font-medium font-dm-serif-display mb-2">
             How SafeRide Works
           </h2>
-          <p className="text-xl color-secondary max-w-3xl mx-auto">
+          <p className="text-base color-secondary max-w-3xl mx-auto">
             Getting home safely is just three simple steps away
           </p>
         </div>
@@ -103,19 +104,18 @@ export default function HowItWorks() {
               ref={(el) => {
                 if (el) cardsRef.current[index] = el;
               }}
-              className="text-center group"
+              className="text-center group flex flex-col items-center justify-center"
             >
-              <div
-                className={`w-16 h-16 ${step.bgColor} rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}
-              >
-                <span className="text-2xl font-bold text-white">
-                  {step.number}
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold color-dark-blue mb-4">
+              <Image
+                src={step.image}
+                alt={step.title}
+                width={250}
+                height={100}
+              />
+              <h3 className="text-xl font-semibold mb-4 text-primary-dark">
                 {step.title}
               </h3>
-              <p className="color-blue-gray">{step.description}</p>
+              <p className="">{step.description}</p>
             </div>
           ))}
         </div>

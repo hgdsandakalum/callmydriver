@@ -24,7 +24,12 @@ import {
   FiBell,
   FiChevronUp,
 } from "react-icons/fi";
-import { FaRegStar, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaRegStar,
+  FaStar,
+  FaArrowRight,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import {
   HiOutlineUser,
@@ -51,6 +56,7 @@ export const Calendar = PiCalendarFill;
 export const Clock = FiClock;
 export const Shield = IoShieldOutline;
 export const Star = FaRegStar;
+export const StarFilled = FaStar;
 export const CheckCircle = FiCheckCircle;
 export const Award = FiAward;
 export const ArrowRight = FaArrowRight;

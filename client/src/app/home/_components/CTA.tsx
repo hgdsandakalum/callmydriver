@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/atoms/button";
 import { Phone } from "../../../../public/icons";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,44 +66,62 @@ export default function CTA() {
     <section
       ref={sectionRef}
       id="contact"
-      className=" flex items-center py-20 bg-gradient-to-r from-dark-blue to-blue-gray"
+      className="relative flex items-center min-h-[400px] bg-[url(/images/pexels-pixabay-210182.jpg)] bg-cover bg-center bg-no-repeat"
     >
-      <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 w-full">
-        <div ref={contentRef}>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Get Home Safely?
-          </h2>
-          <p className="text-xl text-light-gray mb-8">
-            Download the SafeRide app or call us now. Professional drivers are
-            standing by 24/7.
-          </p>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background"></div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto text-center px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex-1 hidden lg:flex justify-center w-1/3">
+          <Image
+            src="/images/footer-cta.png"
+            alt="CTA Image"
+            width={500}
+            height={250}
+            className="object-cover"
+          />
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <div
-            ref={(el) => {
-              if (el) buttonsRef.current[0] = el;
-            }}
-          >
-            <Button
-              size="large"
-              className="bg-white color-dark-blue hover:bg-light-gray text-lg px-8 py-4"
-            >
-              Download App
-            </Button>
+        <div className="flex flex-col justify-center gap-4 w-full lg:w-2/3">
+          <div ref={contentRef}>
+            <h2 className="text-3xl sm:text-5xl font-medium text-center lg:text-end text-white mb-4 font-dm-serif-display">
+              Ready to Get Home Safely?
+            </h2>
+            <p className="text-lg text-white/90 mb-2 lg:mb-8 text-center lg:text-end">
+              Request a ride by sharing your location and we'll match you with a
+              nearby professional driver.
+            </p>
           </div>
-          <div
-            ref={(el) => {
-              if (el) buttonsRef.current[1] = el;
-            }}
-          >
-            <Button
-              size="large"
-              type="outlined"
-              className="border-white text-white hover:bg-white hover:color-dark-blue text-lg px-8 py-4"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+            <div
+              ref={(el) => {
+                if (el) buttonsRef.current[0] = el;
+              }}
             >
-              <Phone className="mr-2 h-5 w-5" />
-              Call Now: (555) 123-RIDE
-            </Button>
+              <Button
+                size="custom"
+                shape="round"
+                className="!px-8 !py-4 !h-[40px] md:!h-[50px] !text-[18px]"
+              >
+                Request a Ride
+              </Button>
+            </div>
+            <div
+              ref={(el) => {
+                if (el) buttonsRef.current[1] = el;
+              }}
+            >
+              <Button
+                size="custom"
+                type="outlined"
+                shape="round"
+                variant="white"
+                className="!px-8 !py-4 !h-[40px] md:!h-[50px] !text-[18px] hover:!bg-white/10"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Call Now: (555) 123-RIDE
+              </Button>
+            </div>
           </div>
         </div>
       </div>

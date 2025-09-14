@@ -57,7 +57,7 @@ const getButtonClasses = (
   const fontSize = getFontSize(size);
 
   const heightClasses = {
-    custom: "",
+    custom: "!font-semibold",
     small: "!h-[24px] md:!h-[30px] !font-semibold",
     middle: "!h-[32px] md:!h-[40px] !font-semibold",
     large: "!h-[40px] md:!h-[50px] !font-semibold",
@@ -111,14 +111,14 @@ const getButtonClasses = (
     } ${customHeight ? "" : heightClasses[size]} ${fontSize}`,
     outlined: `!border-2 ${
       variant === "primary"
-        ? "!border-primary !text-primary hover:!border-primary hover:!text-primary"
+        ? "!bg-transparent !border-primary !text-primary hover:!border-primary hover:!text-primary"
         : variant === "secondary"
-        ? "!border-secondary !text-secondary hover:!border-secondary hover:!text-secondary"
+        ? "!bg-transparent !border-secondary !text-secondary hover:!border-secondary hover:!text-secondary"
         : variant === "white"
-        ? "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
+        ? "!bg-transparent !border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
         : variant === "custom"
         ? ""
-        : "!border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
+        : "!bg-transparent !border-foreground !text-foreground hover:!border-foreground hover:!text-foreground"
     } ${customHeight ? "" : heightClasses[size]} ${fontSize}`,
     link: `${
       variant === "custom"

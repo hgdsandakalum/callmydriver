@@ -56,7 +56,7 @@ export default function IntroBooking() {
         animate={controls}
         exit="exit"
       >
-        <div className="container mx-auto max-w-screen-xl px-4">
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
               className="w-full md:w-1/2 flex flex-col items-center md:items-start"

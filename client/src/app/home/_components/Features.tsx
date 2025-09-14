@@ -23,42 +23,42 @@ export default function Features() {
       title: "Certified Drivers",
       description:
         "All drivers are professionally trained, background-checked, and fully insured for your safety.",
-      iconColor: "color-dark-blue",
+      iconColor: "color-primary",
     },
     {
       icon: Clock,
       title: "24/7 Availability",
       description:
         "Round-the-clock service for emergencies, late nights, and whenever you need us most.",
-      iconColor: "color-primary",
+      iconColor: "color-secondary",
     },
     {
       icon: MapPin,
-      title: "Real-Time Tracking",
+      title: "Transparent Pricing",
       description:
-        "Track your driver's location and estimated arrival time in real-time through our app.",
-      iconColor: "color-blue-gray",
+        "Clear, upfront pricing with no hidden fees. Pay only for the distance traveled, with rates displayed before booking.",
+      iconColor: "color-primary",
     },
     {
       icon: SteeringWheel,
       title: "Your Vehicle",
       description:
         "We drive your own car, so you wake up with your vehicle safely parked at home.",
-      iconColor: "color-dark-blue",
+      iconColor: "color-primary",
     },
     {
       icon: Zap,
       title: "Quick Response",
       description:
         "Average pickup time under 15 minutes in urban areas, with priority emergency response.",
-      iconColor: "color-primary",
+      iconColor: "color-secondary",
     },
     {
       icon: Award,
       title: "Premium Service",
       description:
         "Consistently rated 5 stars by customers for professionalism and reliability.",
-      iconColor: "color-blue-gray",
+      iconColor: "color-primary",
     },
   ];
 
@@ -114,14 +114,14 @@ export default function Features() {
     <section
       ref={sectionRef}
       id="features"
-      className=" flex items-center py-20 bg-light-gray"
+      className=" flex items-center py-20 bg-background"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="features-header text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold color-dark-blue mb-4">
+          <h2 className="text-3xl sm:text-5xl text-foreground font-medium font-dm-serif-display mb-2">
             Why Choose SafeRide?
           </h2>
-          <p className="text-xl color-secondary max-w-3xl mx-auto">
+          <p className="text-base color-secondary max-w-3xl mx-auto">
             We&apos;re committed to providing the safest, most reliable
             designated driver service
           </p>
@@ -137,15 +137,15 @@ export default function Features() {
                   if (el) cardsRef.current[index] = el;
                 }}
               >
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <Card className="border-0 !border-secondary shadow-md hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <IconComponent
                       className={`w-12 h-12 ${feature.iconColor} mb-4`}
                     />
-                    <h3 className="text-xl font-semibold color-dark-blue mb-3">
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
                       {feature.title}
                     </h3>
-                    <p className="color-blue-gray">{feature.description}</p>
+                    <p className="text-foreground">{feature.description}</p>
                   </CardContent>
                 </Card>
               </div>
