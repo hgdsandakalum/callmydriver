@@ -34,10 +34,10 @@ export default function Home() {
       <IntroBooking />
       {/* <Stats /> */}
       <HowItWorks />
-      {/* <Features /> */}
+      <Features />
+      <Testimonials />
       {/* <Safety /> */}
-      {/* <Testimonials /> */}
-      {/* <CTA /> */}
+      <CTA />
     </div>
   );
 }
