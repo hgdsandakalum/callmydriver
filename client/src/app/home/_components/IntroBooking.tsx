@@ -51,7 +51,7 @@ export default function IntroBooking() {
     <AnimatePresence mode="wait">
       <motion.div
         ref={ref}
-        className="bg-primary-dark py-10 sm:py-24"
+        className="bg-primary-dark py-14 md:py-16 lg:py-24"
         initial="hidden"
         animate={controls}
         exit="exit"
@@ -62,10 +62,10 @@ export default function IntroBooking() {
               className="w-full md:w-1/2 flex flex-col items-center md:items-start"
               variants={slideLeft}
             >
-              <h3 className="mx-auto md:mx-0 font-roboto text-sm font-medium text-foreground tracking-wider border border-foreground rounded-full px-4 py-1 w-fit">
+              <h3 className="mx-auto md:mx-0 font-roboto text-sm font-medium text-foreground tracking-wider border border-foreground rounded-full px-4 py-1 w-fit mb-2">
                 Best in City
               </h3>
-              <h2 className="font-dm-serif-display text-2xl sm:text-3xl md:text-[36px] lg:text-[44px] text-foreground mb-3 text-center md:text-left">
+              <h2 className="font-dm-serif-display text-3xl sm:text-3xl md:text-[36px] lg:text-[44px] text-foreground mb-3 text-center md:text-left">
                 Your Safe Ride, On Your Terms
               </h2>
               <p className="text-sm text-foreground mb-6 text-center md:text-left">
@@ -80,9 +80,14 @@ export default function IntroBooking() {
                 travel.
               </p>
               {/* Todo: Link to about page */}
-              <Button variant="white" shape="round" className="w-1/3">
+              <Button
+                variant="white"
+                type="outlined"
+                shape="round"
+                className="w-1/2 lg:w-1/3"
+              >
                 Learn More
-                <ArrowForward className="text-primary" />
+                <ArrowForward className="text-foreground" />
               </Button>
             </motion.div>
 
