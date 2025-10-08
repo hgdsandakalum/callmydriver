@@ -36,7 +36,7 @@ export default function Home() {
       <HowItWorks />
       <Features />
       <Safety />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <CTA />
     </div>
   );

@@ -51,7 +51,7 @@ export default function IntroBooking() {
     <AnimatePresence mode="wait">
       <motion.div
         ref={ref}
-        className="bg-primary-dark py-14 md:py-16 lg:py-24"
+        className="bg-gradient-to-r from-primary-dark to-primary py-14 md:py-16 lg:py-24"
         initial="hidden"
         animate={controls}
         exit="exit"

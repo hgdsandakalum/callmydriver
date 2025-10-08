@@ -94,13 +94,9 @@ export const Footer: React.FC<FooterProps> = ({
           color: "white",
         }}
       >
-        {/* Background Image */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-32 opacity-10 bg-[length:600px] bg-repeat-x bg-bottom"
-          style={{
-            backgroundImage: "url('/images/12218-NO043A.png')",
-          }}
-        />
+        {/* <div className="absolute bottom-0 right-0 w-1/2 h-full opacity-90 bg-gradient-to-l from-background via-background to-transparent z-1 backdrop-blur-lg" /> */}
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-bl from-transparent from-30% via-primary-dark/10 via-60% to-primary-dark" />
 
         {/* Content with relative positioning */}
         <div className="relative z-10">

@@ -1,156 +1,164 @@
 "use client";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/atoms/card";
-import {
-  Shield,
-  Clock,
-  MapPin,
-  SteeringWheel,
-  Zap,
-  Award,
-} from "../../../../public/icons";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Button } from "@/components/atoms/button";
+import { Shield, Clock, MapPin, Award } from "../../../../public/icons";
 
 export default function Features() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
-  const features = [
-    {
-      icon: Shield,
-      title: "Certified Drivers",
-      description:
-        "All drivers are professionally trained, background-checked, and fully insured for your safety.",
-      iconColor: "color-primary",
+  const headerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+      },
     },
-    {
-      icon: Clock,
-      title: "24/7 Availability",
-      description:
-        "Round-the-clock service for emergencies, late nights, and whenever you need us most.",
-      iconColor: "color-secondary",
-    },
-    {
-      icon: MapPin,
-      title: "Transparent Pricing",
-      description:
-        "Clear, upfront pricing with no hidden fees. Pay only for the distance traveled, with rates displayed before booking.",
-      iconColor: "color-primary",
-    },
-    {
-      icon: SteeringWheel,
-      title: "Your Vehicle",
-      description:
-        "We drive your own car, so you wake up with your vehicle safely parked at home.",
-      iconColor: "color-primary",
-    },
-    {
-      icon: Zap,
-      title: "Quick Response",
-      description:
-        "Average pickup time under 15 minutes in urban areas, with priority emergency response.",
-      iconColor: "color-secondary",
-    },
-    {
-      icon: Award,
-      title: "Premium Service",
-      description:
-        "Consistently rated 5 stars by customers for professionalism and reliability.",
-      iconColor: "color-primary",
-    },
-  ];
+  };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header animation
-      gsap.fromTo(
-        ".features-header",
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "top 50%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Cards grid animation
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          gsap.fromTo(
-            card,
-            { opacity: 0, y: 50, rotationX: 45 },
-            {
-              opacity: 1,
-              y: 0,
-              rotationX: 0,
-              duration: 0.8,
-              delay: index * 0.1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: card,
-                start: "top 90%",
-                end: "bottom 60%",
-                toggleActions: "play none none reverse",
-              },
-            }
-          );
-        }
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      id="features"
-      className=" flex items-center py-20 bg-background"
-    >
+    <section id="features" className="py-20 bg-background flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="features-header text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl text-foreground font-medium font-dm-serif-display mb-2">
-            Why Choose SafeRide?
-          </h2>
-          <p className="text-base color-secondary max-w-3xl mx-auto">
-            We&apos;re committed to providing the safest, most reliable
-            designated driver service
-          </p>
+        <div className="text-center mb-16">
+          <motion.div
+            variants={headerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h2 className="text-3xl sm:text-5xl font-medium font-dm-serif-display mb-4 text-foreground">
+              Why Choose CallMyDriver
+            </h2>
+            <p className="text-sm sm:text-base text-secondary max-w-3xl mx-auto">
+              CallMyDriver offers a range of features that make it the perfect
+              choice for your needs.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
-            return (
-              <div
-                key={index}
-                ref={(el) => {
-                  if (el) cardsRef.current[index] = el;
-                }}
-              >
-                <Card className="border-0 !border-secondary shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <IconComponent
-                      className={`w-12 h-12 ${feature.iconColor} mb-4`}
-                    />
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-3 gap-6">
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="col-span-1 row-span-1"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className="h-full backdrop-blur-sm !border-secondary !text-foreground hover:!shadow-none">
+              <CardContent className="p-6 text-center h-full flex flex-col">
+                <div className="mb-6">
+                  <Shield className="w-16 h-16 !text-primary mx-auto" />
+                </div>
+                <h3 className="text-xl font-semibold !text-primary  mb-4">
+                  Expert Instructors
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed flex-grow">
+                  Learn from top industry professionals who bring years of
+                  real-world experience to the classroom, providing you with the
+                  latest tools, techniques, and insights needed to excel in your
+                  field.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="col-span-1 row-span-1"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className="h-full backdrop-blur-sm !border-secondary !text-foreground">
+              <CardContent className="p-6 text-center h-full flex flex-col">
+                <div className="mb-6">
+                  <Clock className="w-16 h-16 !text-primary mx-auto" />
+                </div>
+                <h3 className="text-xl font-semibold !text-primary mb-4">
+                  Career-Boost Certifications
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed flex-grow">
+                  Earn certifications that are highly regarded by employers,
+                  helping to enhance your resume, gain industry recognition, and
+                  open doors to new career opportunities.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="col-span-1 row-span-2"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className="h-full backdrop-blur-sm !border-secondary !text-foreground">
+              <CardContent className="p-6 text-center h-full flex flex-col">
+                <div className="mb-6">
+                  <Award className="w-16 h-16 !text-primary mx-auto" />
+                </div>
+                <h3 className="text-xl font-semibold !text-primary mb-4">
+                  100+ High Impact Courses
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed flex-grow">
+                  expert.io offers over 100 courses that cover essentials in
+                  today's tech industry. Whether you're a beginner or an
+                  experienced professional, our courses in web development, data
+                  science, and cybersecurity provide practical, hands-on
+                  learning to help you apply your skills immediately &
+                  competitive.
+                </p>
+                <Button variant="primary" shape="round" className="mt-8">
+                  Start Free Trial →
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="col-span-2"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className="h-full backdrop-blur-sm !border-secondary !text-foreground">
+              <CardContent className="p-8 text-center h-full flex flex-col">
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MapPin className="w-8 h-8 !text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold !text-primary mb-4">
+                    Flexible Learning Schedules
+                  </h3>
+                  <p className="text-white/90 text-sm leading-relaxed mb-6 flex-grow">
+                    Whether you're a working professional or a student, you can
+                    customize your schedule to fit your needs.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>
