@@ -29,6 +29,7 @@ import {
   FaStar,
   FaArrowRight,
   FaMapMarkerAlt,
+  FaShieldAlt,
 } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import {
@@ -55,6 +56,7 @@ export const Envelope = PiEnvelopeFill;
 export const Calendar = PiCalendarFill;
 export const Clock = FiClock;
 export const Shield = IoShieldOutline;
+export const ShieldAlt = FaShieldAlt;
 export const Star = FaRegStar;
 export const StarFilled = FaStar;
 export const CheckCircle = FiCheckCircle;

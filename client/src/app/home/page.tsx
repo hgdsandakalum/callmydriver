@@ -35,8 +35,8 @@ export default function Home() {
       {/* <Stats /> */}
       <HowItWorks />
       <Features />
-      <Testimonials />
-      {/* <Safety /> */}
+      <Safety />
+      {/* <Testimonials /> */}
       <CTA />
     </div>
   );
