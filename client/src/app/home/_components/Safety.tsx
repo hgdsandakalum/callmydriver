@@ -13,24 +13,24 @@ export default function Safety() {
   const cardRef = useRef<HTMLDivElement>(null);
   const safetyFeatures = [
     {
-      title: "Comprehensive Background Checks",
+      title: "Verified & Trusted Drivers",
       description:
-        "Every driver undergoes thorough criminal background checks and driving record verification.",
+        "All drivers undergo background and driving history checks for your safety.",
     },
     {
-      title: "Full Insurance Coverage",
+      title: "Insurance Protection for Every Ride",
       description:
-        "Complete liability and comprehensive insurance coverage for every ride.",
+        "Each trip includes full liability and vehicle insurance coverage.",
     },
     {
       title: "GPS Tracking & Monitoring",
       description:
-        "All rides are GPS tracked and monitored by our safety team in real-time.",
+        "Every ride is GPS-tracked and monitored in real time by our team",
     },
     {
       title: "Emergency Support",
       description:
-        "24/7 emergency support hotline with immediate assistance capabilities.",
+        "Our support hotline is always active. Whether it’s a late-night trip or an urgent request, help is just one call away — anytime, anywhere.",
     },
   ];
 
@@ -106,16 +106,18 @@ export default function Safety() {
     <section
       ref={sectionRef}
       id="safety"
-      className="flex items-center pt-20 pb-24 bg-primary-dark min-h-[70dvh]"
+      className="relative flex items-center pt-20 pb-24 bg-primary-dark min-h-[70dvh]"
     >
+      <div className="absolute inset-0 bg-primary-dark bg-[url(/images/road-pattern.png)] bg-blend-multiply" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="safety-header text-center mb-16">
           <h2 className="text-3xl sm:text-5xl text-foreground font-medium font-dm-serif-display mb-2">
             Safety is Our Priority
           </h2>
           <p className="text-base text-foreground max-w-3xl mx-auto">
-            Every aspect of our service is designed with your safety and peace
-            of mind in mind
+            Every ride is built on trust, reliability, and care. From the moment
+            you request a driver to the time you reach home safely, your peace
+            of mind is our top priority.
           </p>
         </div>
 

@@ -51,12 +51,14 @@ export default function IntroBooking() {
     <AnimatePresence mode="wait">
       <motion.div
         ref={ref}
-        className="bg-gradient-to-r from-primary-dark to-primary py-14 md:py-16 lg:py-24"
+        className="relative bg-gradient-to-r from-primary-dark to-primary py-14 md:py-16 lg:py-24"
         initial="hidden"
         animate={controls}
         exit="exit"
       >
-        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-primary-dark bg-[url(/images/road-pattern.png)] bg-blend-multiply" />
+
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 drop-shadow">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
               className="w-full md:w-1/2 flex flex-col items-center md:items-start"

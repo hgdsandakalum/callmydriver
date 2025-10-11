@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({
       >
         {/* <div className="absolute bottom-0 right-0 w-1/2 h-full opacity-90 bg-gradient-to-l from-background via-background to-transparent z-1 backdrop-blur-lg" /> */}
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-bl from-transparent from-30% via-primary-dark/10 via-60% to-primary-dark" />
+        {/* <div className="absolute inset-0 bg-gradient-to-bl from-transparent from-30% via-primary-dark/10 via-40% to-primary-dark" /> */}
 
         {/* Content with relative positioning */}
         <div className="relative z-10">

@@ -66,7 +66,7 @@ export default function CTA() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative flex items-center min-h-[400px] bg-[url(/images/pexels-pixabay-210182.jpg)] bg-cover bg-center bg-no-repeat"
+      className="relative flex items-center min-h-[400px] bg-gradient-to-b from-primary-dark via-primary/80 to-primary-dark bg-[url(/images/pexels-pixabay-210182.jpg)] bg-cover bg-center bg-no-repeat bg-blend-multiply"
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background"></div>
