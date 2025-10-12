@@ -67,10 +67,10 @@ export default function IntroBooking() {
               <h3 className="mx-auto md:mx-0 font-roboto text-sm font-medium text-foreground tracking-wider border border-foreground rounded-full px-4 py-1 w-fit mb-2">
                 Best in City
               </h3>
-              <h2 className="font-dm-serif-display text-3xl sm:text-3xl md:text-[36px] lg:text-[44px] text-foreground mb-3 text-center md:text-left">
+              <h2 className="font-dm-serif-display text-3xl sm:text-[36px] md:text-[36px] lg:text-[44px] text-foreground mb-3 text-center md:text-left">
                 Your Safe Ride, On Your Terms
               </h2>
-              <p className="text-sm text-foreground mb-6 text-center md:text-left">
+              <p className="text-xs md:text-sm text-foreground mb-6 text-center md:text-left">
                 Life doesn't always go as planned — but getting home safely
                 should never be a challenge. With Call-My-Driver, a
                 professional, background-checked driver is always just a call or

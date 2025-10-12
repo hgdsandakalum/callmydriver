@@ -229,7 +229,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     >
       <motion.div
         className={cn(
-          "flex justify-center bg-cover bg-center p-4 sm:p-6 md:p-8 w-full min-h-[calc(100dvh-16px)] xs:min-h-[calc(90dvh)] md:min-h-[calc(75dvh)] lg:min-h-[calc(75dvh)] xl:min-h-[calc(75dvh)] h-auto items-center pt-[2dvh] sm:pt-0"
+          "flex justify-center bg-cover bg-center p-4 sm:p-6 md:p-8 w-full min-h-[calc(100dvh-16px)] xs:min-h-[calc(90dvh)] md:min-h-[calc(90dvh)] lg:min-h-[calc(85dvh)] xl:min-h-[calc(85dvh)] h-auto items-center pt-[2dvh] sm:pt-0"
         )}
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 125, 30, 0.5)), url(${slide.backgroundImage})`,

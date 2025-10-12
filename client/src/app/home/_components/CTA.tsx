@@ -73,7 +73,7 @@ export default function CTA() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto text-center px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row gap-8 items-center">
-        <div className="flex-1 hidden lg:flex justify-center w-1/3">
+        {/* <div className="flex-1 hidden lg:flex justify-center w-1/3">
           <Image
             src="/images/footer-cta.png"
             alt="CTA Image"
@@ -81,18 +81,18 @@ export default function CTA() {
             height={250}
             className="object-cover"
           />
-        </div>
-        <div className="flex flex-col justify-center gap-4 w-full lg:w-2/3">
+        </div> */}
+        <div className="flex flex-col justify-center gap-4 w-full">
           <div ref={contentRef}>
-            <h2 className="text-3xl sm:text-5xl font-medium text-center lg:text-end text-white mb-4 font-dm-serif-display">
+            <h2 className="text-3xl sm:text-5xl font-medium text-center lg:text-center text-white mb-4 font-dm-serif-display">
               Ready to Get Home Safely?
             </h2>
-            <p className="text-lg text-white/90 mb-2 lg:mb-8 text-center lg:text-end">
+            <p className="text-lg text-white/90 mb-2 lg:mb-8 text-center lg:text-center">
               Request a ride by sharing your location and we'll match you with a
               nearby professional driver.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-center">
             <div
               ref={(el) => {
                 if (el) buttonsRef.current[0] = el;
