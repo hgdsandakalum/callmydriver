@@ -18,11 +18,11 @@ export const NAVIGATION_CONSTANTS = {
 } as const;
 
 export const BASE_MENU_ITEMS: MenuItem[] = [
-  { href: "#home", label: "Home", key: "home" },
-  { href: "#how-it-works", label: "How It Works", key: "how-it-works" },
-  { href: "#features", label: "Features", key: "features" },
-  { href: "#about", label: "About", key: "about" },
-  { href: "#contact", label: "Contact", key: "contact" },
+  { href: "/home", label: "Home", key: "home" },
+  { href: "/home#how-it-works", label: "How It Works", key: "how-it-works" },
+  { href: "/home#features", label: "Features", key: "features" },
+  { href: "/home#about", label: "About", key: "about" },
+  { href: "/contact", label: "Contact", key: "contact" },
 ];
 
 export const USER_MENU_ITEMS = [

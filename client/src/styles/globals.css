@@ -190,7 +190,13 @@ body {
 .booking-form .ant-input,
 .booking-form .ant-input-affix-wrapper,
 .booking-form .ant-select-selector {
-  border-radius: 9999px !important; /* rounded-full */
+  border-radius: 9999px !important;
+}
+
+.booking-form .booking-form-textarea .ant-input,
+.booking-form .ant-input-affix-wrapper,
+.booking-form .ant-select-selector {
+  border-radius: 16px !important;
 }
 
 /* Placeholder color */

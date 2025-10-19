@@ -23,6 +23,7 @@ import {
   FiZap,
   FiBell,
   FiChevronUp,
+  FiMessageCircle,
 } from "react-icons/fi";
 import {
   FaRegStar,
@@ -90,3 +91,4 @@ export const Twitter = FaTwitter;
 export const Instagram = FaInstagram;
 export const Linkedin = FaLinkedin;
 export const MousePointerClick = LuMousePointerClick;
+export const MessageCircle = FiMessageCircle;

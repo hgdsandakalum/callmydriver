@@ -50,7 +50,7 @@ export default function CTA() {
               scrollTrigger: {
                 trigger: button,
                 start: "top 90%",
-                end: "bottom 60%",
+                end: "bottom 10%",
                 toggleActions: "play none none reverse",
               },
             }
