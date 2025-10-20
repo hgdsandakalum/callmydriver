@@ -41,24 +41,15 @@ export default function ContactForm() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="bg-foreground rounded-2xl shadow-2xl p-8"
+      className="bg-primary rounded-2xl shadow-xl p-8 relative"
     >
-      <div className="text-center mb-8">
-        <h3 className="text-3xl md:text-4xl font-semibold text-primary-dark mb-4 font-dm-serif-display">
-          Get in Touch
-        </h3>
-        <p className="text-secondary text-sm md:text-base">
-          Have questions? We'd love to hear from you. Send us a message and
-          we'll respond as soon as possible.
-        </p>
-      </div>
-
+      <div className="absolute inset-0 bg-primary-dark bg-[url(/images/road-pattern.png)] bg-blend-multiply rounded-2xl" />
       <Form
         form={form}
         name="contact"
         layout="vertical"
         onFinish={handleSubmit}
-        className="booking-form space-y-2"
+        className="booking-form space-y-1"
       >
         <div className="grid grid-cols-1 gap-6">
           <Form.Item
@@ -139,8 +130,9 @@ export default function ContactForm() {
         <Form.Item className="text-center">
           <Button
             htmlType="submit"
-            type="block"
+            type="outlined"
             shape="round"
+            variant="white"
             className="w-full mt-4"
             loading={loading}
             size="large"

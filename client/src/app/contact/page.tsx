@@ -1,41 +1,28 @@
 "use client";
-import { ContactForm, CompanyInfo } from "./_components";
+import { ContactForm, ContactInfo } from "./_components";
+import { AboutCTA } from "../about/_components";
 
 export default function Contact() {
   return (
-    <div className="scroll-container">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-dark to-primary py-20 md:py-24 min-h-[500px] flex flex-col justify-center items-center">
-        <div className="absolute inset-0 bg-background bg-[url(/images/pexels-jeshoots-7433.jpg)] bg-cover bg-center bg-blend-overlay" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 font-dm-serif-display">
-            Contact Us
-          </h1>
-          <p className="text-base md:text-xl text-foreground/90 max-w-3xl mx-auto">
-            Need a safe ride home? Have questions about our services? We're here
-            to help. Reach out to us and we'll get back to you as soon as
-            possible.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-16 md:py-20 bg-background relative">
+    <div className="scroll-container bg-background">
+      {/* Main Content - Dark Purple Background */}
+      <section className="pt-28 md:pt-32 lg:pt-40 pb-16 md:pb-24 lg:pb-32  relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Contact Form */}
-            <div className="order-2 lg:order-1">
-              <ContactForm />
+            {/* Contact Information - Left Column */}
+            <div className="order-1 flex items-center">
+              <ContactInfo />
             </div>
 
-            {/* Company Information */}
-            <div className="order-1 lg:order-2">
-              <CompanyInfo />
+            {/* Contact Form - Right Column */}
+            <div className="order-2">
+              <ContactForm />
             </div>
           </div>
         </div>
       </section>
+      {/* CTA Section */}
+      <AboutCTA />
     </div>
   );
 }

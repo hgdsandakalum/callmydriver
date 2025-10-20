@@ -13,7 +13,6 @@ export default function ContactLayout({
       <Navigation />
       <main>{children}</main>
       <ScrollToTop />
-      <CTA />
       <Footer />
     </div>
   );
