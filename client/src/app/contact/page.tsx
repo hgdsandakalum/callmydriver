@@ -1,5 +1,5 @@
 "use client";
-import { ContactForm, ContactInfo } from "./_components";
+import { ContactForm, ContactInfo, ContactFAQ } from "./_components";
 import { AboutCTA } from "../about/_components";
 
 export default function Contact() {
@@ -21,6 +21,10 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <ContactFAQ />
+
       {/* CTA Section */}
       <AboutCTA />
     </div>
