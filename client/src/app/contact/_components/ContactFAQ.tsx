@@ -73,15 +73,15 @@ export default function ContactFAQ() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-16 md:py-20 bg-primary-dark relative"
+      className="py-12 md:py-16 lg:py-20 bg-primary-dark relative"
     >
       <div className="absolute inset-0 bg-primary-dark bg-[url(/images/road-pattern.png)] bg-blend-multiply" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6 md:mb-12">
           <h2 className="text-3xl md:text-5xl text-foreground mb-4 font-dm-serif-display">
             Frequently Asked Questions
           </h2>
-          <p className="text-foreground text-lg">
+          <p className="text-foreground text-base md:text-lg">
             Find answers to common questions about our services
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function ContactFAQ() {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 text-left flex items-center justify-between cursor-pointer"
               >
-                <h3 className="text-lg font-semibold text-background pr-4">
+                <h3 className="text-base md:text-lg font-semibold text-background pr-4">
                   {faq.question}
                 </h3>
                 <div className="flex-shrink-0">
@@ -121,7 +121,7 @@ export default function ContactFAQ() {
                   transition={{ duration: 0.3 }}
                   className="px-6 pb-4"
                 >
-                  <p className="text-background leading-relaxed">
+                  <p className="text-background text-sm md:text-base leading-relaxed">
                     {faq.answer}
                   </p>
                 </motion.div>
