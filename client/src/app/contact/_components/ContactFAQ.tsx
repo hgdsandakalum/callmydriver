@@ -73,15 +73,15 @@ export default function ContactFAQ() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-16 md:py-20 bg-foreground relative"
+      className="py-16 md:py-20 bg-primary-dark relative"
     >
-      <div className="absolute inset-0 bg-foreground bg-[url(/images/road-pattern.png)] bg-blend-multiply" />
+      <div className="absolute inset-0 bg-primary-dark bg-[url(/images/road-pattern.png)] bg-blend-multiply" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl text-background mb-4 font-dm-serif-display">
+          <h2 className="text-3xl md:text-5xl text-foreground mb-4 font-dm-serif-display">
             Frequently Asked Questions
           </h2>
-          <p className="text-secondary text-lg">
+          <p className="text-foreground text-lg">
             Find answers to common questions about our services
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function ContactFAQ() {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-primary transition-colors duration-200 cursor-pointer"
+                className="w-full px-6 py-4 text-left flex items-center justify-between cursor-pointer"
               >
                 <h3 className="text-lg font-semibold text-background pr-4">
                   {faq.question}

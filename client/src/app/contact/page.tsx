@@ -26,7 +26,7 @@ export default function Contact() {
       <ContactFAQ />
 
       {/* CTA Section */}
-      <AboutCTA />
+      <AboutCTA variant="light" />
     </div>
   );
 }
