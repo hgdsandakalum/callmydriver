@@ -51,12 +51,14 @@ export default function IntroBooking() {
     <AnimatePresence mode="wait">
       <motion.div
         ref={ref}
-        className="bg-gradient-to-r from-primary-dark to-primary py-14 md:py-16 lg:py-24"
+        className="relative bg-gradient-to-r from-primary-dark to-primary py-14 md:py-16 lg:py-24"
         initial="hidden"
         animate={controls}
         exit="exit"
       >
-        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-primary-dark bg-[url(/images/road-pattern.png)] bg-blend-multiply" />
+
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 drop-shadow">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
               className="w-full md:w-1/2 flex flex-col items-center md:items-start"
@@ -65,10 +67,10 @@ export default function IntroBooking() {
               <h3 className="mx-auto md:mx-0 font-roboto text-sm font-medium text-foreground tracking-wider border border-foreground rounded-full px-4 py-1 w-fit mb-2">
                 Best in City
               </h3>
-              <h2 className="font-dm-serif-display text-3xl sm:text-3xl md:text-[36px] lg:text-[44px] text-foreground mb-3 text-center md:text-left">
+              <h2 className="font-dm-serif-display text-3xl sm:text-[36px] md:text-[36px] lg:text-[44px] text-foreground mb-3 text-center md:text-left">
                 Your Safe Ride, On Your Terms
               </h2>
-              <p className="text-sm text-foreground mb-6 text-center md:text-left">
+              <p className="text-xs md:text-sm text-foreground mb-6 text-center md:text-left">
                 Life doesn't always go as planned — but getting home safely
                 should never be a challenge. With Call-My-Driver, a
                 professional, background-checked driver is always just a call or

@@ -23,6 +23,7 @@ import {
   FiZap,
   FiBell,
   FiChevronUp,
+  FiMessageCircle,
 } from "react-icons/fi";
 import {
   FaRegStar,
@@ -47,6 +48,7 @@ import {
   IoIosArrowUp,
 } from "react-icons/io";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { LuMousePointerClick } from "react-icons/lu";
 
 export const SteeringWheel = PiSteeringWheelFill;
 export const Users = FiUsers;
@@ -88,3 +90,5 @@ export const Facebook = FaFacebook;
 export const Twitter = FaTwitter;
 export const Instagram = FaInstagram;
 export const Linkedin = FaLinkedin;
+export const MousePointerClick = LuMousePointerClick;
+export const MessageCircle = FiMessageCircle;

@@ -101,7 +101,7 @@ export default function HowItWorks() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-5xl font-medium font-dm-serif-display mb-4 text-background">
+          <h2 className="text-[36px] md:text-5xl font-medium font-dm-serif-display mb-4 text-background">
             How CallMyDriver Works
           </h2>
           <p className="text-sm sm:text-base text-secondary max-w-3xl mx-auto">
