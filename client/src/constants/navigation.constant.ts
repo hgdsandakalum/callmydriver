@@ -22,6 +22,7 @@ export const BASE_MENU_ITEMS: MenuItem[] = [
   { href: "/home#how-it-works", label: "How It Works", key: "how-it-works" },
   { href: "/home#features", label: "Features", key: "features" },
   { href: "/about", label: "About", key: "about" },
+  { href: "/careers", label: "Careers", key: "careers" },
   { href: "/contact", label: "Contact", key: "contact" },
 ];
 
