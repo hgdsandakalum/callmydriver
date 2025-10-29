@@ -3,9 +3,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ArrowDown, ArrowUp } from "@/../public/icons";
 import { Button } from "@/components/atoms/button";
+import { Modal } from "@/components/atoms/modal";
+import { Form, Input, message } from "antd";
 
 export default function CareerJobs() {
   const [openIndex, setOpenIndex] = useState<number | null>(2); // UI/UX Designer expanded by default
+  const [applyOpen, setApplyOpen] = useState<boolean>(false);
+  const [applyingJob, setApplyingJob] = useState<string | null>(null);
+  const [form] = Form.useForm();
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -116,6 +121,29 @@ export default function CareerJobs() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const handleOpenApply = (jobTitle: string) => {
+    setApplyingJob(jobTitle);
+    setApplyOpen(true);
+  };
+
+  const handleCloseApply = () => {
+    setApplyOpen(false);
+    setApplyingJob(null);
+    form.resetFields();
+  };
+
+  const handleSubmitApplication = async () => {
+    try {
+      const values = await form.validateFields();
+      // Simulate submit
+      await new Promise((r) => setTimeout(r, 600));
+      message.success("Application submitted successfully");
+      handleCloseApply();
+    } catch (e) {
+      // validation errors are handled by antd
+    }
+  };
+
   return (
     <motion.section
       variants={sectionVariants}
@@ -187,7 +215,7 @@ export default function CareerJobs() {
                       <h4 className="text-lg font-semibold text-foreground mb-3">
                         Project details:
                       </h4>
-                      <p className="text-foreground/80 leading-relaxed">
+                      <p className="text-foreground text-sm md:text-base leading-relaxed">
                         {job.details.projectDetails}
                       </p>
                     </div>
@@ -229,6 +257,7 @@ export default function CareerJobs() {
                         shape="round"
                         label="Apply Now"
                         className="w-[200px]"
+                        onClick={() => handleOpenApply(job.title)}
                       />
                     </div>
                   </div>
@@ -237,6 +266,85 @@ export default function CareerJobs() {
             </motion.div>
           ))}
         </div>
+
+        {/* Apply Modal */}
+        <Modal
+          open={applyOpen}
+          onCancel={handleCloseApply}
+          title={applyingJob ? `Apply for ${applyingJob}` : "Apply Now"}
+          footer={
+            <div className="flex justify-end gap-2">
+              <Button
+                type="outlined"
+                variant="secondary"
+                shape="round"
+                label="Cancel"
+                onClick={handleCloseApply}
+              />
+              <Button
+                type="block"
+                variant="primary"
+                shape="round"
+                label="Submit Application"
+                onClick={handleSubmitApplication}
+                className="w-[200px]"
+              />
+            </div>
+          }
+        >
+          <Form
+            form={form}
+            layout="vertical"
+            name="job-apply-form"
+            className="booking-form"
+          >
+            <Form.Item
+              label="Full Name"
+              name="fullName"
+              rules={[
+                { required: true, message: "Please enter your full name" },
+              ]}
+            >
+              <Input placeholder="Enter your full name" />
+            </Form.Item>
+
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                { required: true, message: "Please enter your email" },
+                { type: "email", message: "Please enter a valid email" },
+              ]}
+            >
+              <Input placeholder="Enter your email" />
+            </Form.Item>
+
+            <Form.Item
+              label="Phone Number"
+              name="phone"
+              rules={[
+                { required: true, message: "Please enter your phone number" },
+              ]}
+            >
+              <Input placeholder="Enter your phone number" />
+            </Form.Item>
+
+            <Form.Item label="Resume/Portfolio URL" name="resume">
+              <Input placeholder="Link to resume or portfolio (optional)" />
+            </Form.Item>
+
+            <Form.Item
+              label="Cover Letter"
+              name="coverLetter"
+              className="booking-form-textarea"
+            >
+              <Input.TextArea
+                rows={5}
+                placeholder="Briefly tell us about yourself (optional)"
+              />
+            </Form.Item>
+          </Form>
+        </Modal>
       </div>
     </motion.section>
   );
