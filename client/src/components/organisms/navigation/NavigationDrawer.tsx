@@ -25,10 +25,10 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
     key: item.key,
     label: item.label,
     onClick: () => {
-      onMenuClick(item.key);
-      if (item.href.startsWith("#")) {
-        scrollToHash(item.href);
-      }
+      onMenuClick(item.href);
+      // if (item.href.startsWith("#")) {
+      //   scrollToHash(item.href);
+      // }
       onClose();
     },
   }));

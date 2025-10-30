@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { ROUTES } from "@/constants";
 import { scrollToElement, createScrollListener } from "@/utils/scroll.utills";
 import { useIntersectionObserver, useIsMobileDevice } from "@/hooks";
@@ -8,6 +8,7 @@ import { BASE_MENU_ITEMS, NAVIGATION_CONSTANTS } from "@/constants";
 
 export const useNavigation = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const isMobile = useIsMobileDevice(NAVIGATION_CONSTANTS.BREAKPOINTS.MOBILE);
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,6 +47,20 @@ export const useNavigation = () => {
     const removeScrollListener = createScrollListener(setScrollY);
     return removeScrollListener;
   }, []);
+
+  useEffect(() => {
+    if (!pathname) return;
+    const normalizedPath = pathname === "/" ? "/home" : pathname;
+    const matched = menuItems.find(
+      (item) => item.href.split("#")[0] === normalizedPath
+    );
+    if (matched) {
+      setSelectedKey(matched.key);
+    } else {
+      // Clear if no direct match (e.g., other routes)
+      setSelectedKey(null as unknown as string);
+    }
+  }, [pathname, menuItems]);
 
   // Compute visibility of "Need a Driver" button
   useEffect(() => {
@@ -97,11 +112,20 @@ export const useNavigation = () => {
   };
 
   const handleMenuClick = (key: string) => {
-    setSelectedKey(key);
-    // Find the corresponding menu item and scroll to it
-    const menuItem = menuItems.find((item) => item.key === key);
-    if (menuItem && menuItem.href.startsWith("#")) {
-      scrollToElement(menuItem.href.substring(1)); // Remove the # symbol
+    const menuItem = menuItems.find((item) => item.href === key);
+    if (!menuItem) return;
+
+    setSelectedKey(menuItem.key);
+    const href = menuItem.href;
+
+    if (href.startsWith("#")) {
+      scrollToElement(href.substring(1));
+      return;
+    }
+
+    if (href.startsWith("/")) {
+      router.push(href as any);
+      return;
     }
   };
 
