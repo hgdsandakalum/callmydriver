@@ -25,10 +25,10 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
     key: item.key,
     label: item.label,
     onClick: () => {
-      onMenuClick(item.key);
-      if (item.href.startsWith("#")) {
-        scrollToHash(item.href);
-      }
+      onMenuClick(item.href);
+      // if (item.href.startsWith("#")) {
+      //   scrollToHash(item.href);
+      // }
       onMobileMenuClose();
     },
   }));
